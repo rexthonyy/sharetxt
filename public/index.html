@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Text Share</title>
+
+		<style>
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				text-align: center;
+				width: 70%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			h1{
+				font-size: 32px;
+			}
+			#inputField{
+				width: 100%;
+				padding: 16px;
+				margin-top: 32px;
+				font-size: 24px;
+				text-align: center;
+			}
+			button{
+				width: 100%;
+				padding: 16px 32px;
+				margin-top: 24px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Share text between people and devices</h1>
+			
+			<input type="text" id="inputField" placeholder="Type or paste the text to share"/><br/>
+			
+			<button id="shareBtn">Share</button>
+		</div>
+	
+		<script>
+		
+			let inputField = document.getElementById("inputField");
+			let shareBtn = document.getElementById("shareBtn");
+			
+			let socketUrl = "ws://127.0.0.1:3000"; //wss://text-share.herokuapp.com/
+			let socket = new WebSocket(socketUrl);
+			
+			let isSocketConnected = false;
+			
+			socket.onopen = e => {
+				isSocketConnected = true;
+				console.log("WebSocket connection established");
+			};
+			
+			socket.onclose = e => {
+				console.log("Websocket is closed");
+			};
+			
+			socket.onerror = e => {
+				console.log("WebSocket error ${`e`}");
+			};
+			
+			socket.onmessage = e => {
+				inputField.value = e.data;
+			};
+			
+			window.onload = () => {
+				shareBtn.onclick = () => {
+					if(isSocketConnected){
+						let inputValue = inputField.value;
+						socket.send(inputValue);
+					}else{
+						console.log("Socket is not yet connected");
+						alert("Socket not connected");
+					}
+				};
+			}
+
+		</script>
+	</body>
+</html>
