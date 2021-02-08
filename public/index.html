@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Rex Share</title>
 		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
@@ -30,10 +31,14 @@
 				margin: auto;
 				line-height: 32px;
 			}
+			#inputC{
+				position: relative;
+				margin-top: 64px;
+			}
 			#inputField{
 				width: 100%;
 				padding: 16px;
-				margin-top: 64px;
+				padding-right: 60px;
 				font-size: 24px;
 				text-align: center;
 				border-radius: 16px;
@@ -43,6 +48,18 @@
 			}
 			#inputField:focus{
 				border: 2px solid gray;
+			}
+			#copyC{
+				position: absolute;
+				right: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+				cursor: pointer;
+				font-size: 28px;
+				color: gray;
+			}
+			#copyC:hover{
+				color: blue;
 			}
 			button{
 				width: 100%;
@@ -66,6 +83,11 @@
 				margin-top: 16px;
 			}
 			
+			#createdBy{
+				margin-top: 64px;
+				font-size: 12px;
+			}
+			
 			@media (max-width: 700px){
 				.container{
 					width: 90%;
@@ -79,9 +101,12 @@
 			<h1>Rex Share</h1>
 			<p>Visit this website on two devices or browser windows, enter your text in the field below to share.</p>
 			
-			<input type="text" id="inputField" placeholder="Type or paste the text to share"/><br/>
+			<div id="inputC">
+				<input type="text" id="inputField" placeholder="Type or paste the text to share"/>
+				<span id="copyC"><i class="fas fa-copy"></i></span>
+			</div>
 			
-			<!--<button id="shareBtn">Share</button>-->
+			<div id="createdBy">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony"><b>@rexthony</b></a></div>
 			
 			<div id="version">v 1.0.1</div>
 		</div>
@@ -89,7 +114,7 @@
 		<script>
 		
 			let inputField = document.getElementById("inputField");
-			let shareBtn = document.getElementById("shareBtn");
+			let copyBtn = document.getElementById("copyC");
 			
 			let socketUrl = "wss://rexshare.herokuapp.com/"; //"ws://127.0.0.1:3000";
 			let socket = new WebSocket(socketUrl);
@@ -113,17 +138,13 @@
 				inputField.value = e.data;
 			};
 			
-			/*
-			window.onload = () => {
-				shareBtn.onclick = () => {
-					shareInput();
-				};
-			}
-			*/
-			
 			inputField.oninput = () => {
 				shareInput();
-			}
+			};
+			
+			copyBtn.onclick = () => {
+				copyToClipboard(inputField.value);
+			};
 			
 			function shareInput(){
 				if(isSocketConnected){
@@ -133,6 +154,15 @@
 					console.log("Socket is not yet connected");
 					alert("Socket not connected");
 				}
+			}
+			
+			function copyToClipboard(text){
+				var dummy = document.createElement("textarea");
+				document.body.appendChild(dummy);
+				dummy.value = text;
+				dummy.select();
+				document.execCommand("copy");
+				document.body.removeChild(dummy);
 			}
 		</script>
 	</body>
