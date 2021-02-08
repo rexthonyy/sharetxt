@@ -1,12 +1,17 @@
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>Text Share</title>
+		<title>Rex Share</title>
+		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
 
 		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 			body{
 				margin: 0;
 				padding: 0;
+				background-color: rgb(245, 256, 255);
+				font-family: 'Roboto Mono', monospace;
 			}
 			.container{
 				text-align: center;
@@ -19,30 +24,66 @@
 			h1{
 				font-size: 32px;
 			}
+			p{
+				color: rgb(145, 156, 155);
+				width: 80%;
+				margin: auto;
+				line-height: 32px;
+			}
 			#inputField{
 				width: 100%;
 				padding: 16px;
-				margin-top: 32px;
+				margin-top: 64px;
 				font-size: 24px;
 				text-align: center;
+				border-radius: 16px;
+				border: 0;
+				border: 1px solid gray;
+				outline: none;
+			}
+			#inputField:focus{
+				border: 2px solid gray;
 			}
 			button{
 				width: 100%;
-				padding: 16px 32px;
-				margin-top: 24px;
-				cursor: pointer;
+				padding: 18px 32px;
+				margin-top: 42px;
 				font-size: 16px;
+				border-radius: 16px;
+				border: 0;
+				background-color: rgb(60, 60, 233);
+				color: white;
+				letter-spacing: 8px;
+				outline: none;
+			}
+			button:hover{
+				cursor: pointer;
+				background-color: blue;
+			}
+			#version{
+				font-size: 8px;
+				color: rgb(165, 186, 285);
+				margin-top: 16px;
+			}
+			
+			@media (max-width: 700px){
+				.container{
+					width: 90%;
+				}
 			}
 		</style>
 	</head>
 
 	<body>
 		<div class="container">
-			<h1>Share text between people and devices</h1>
+			<h1>Rex Share</h1>
+			<p>Visit this website on two devices or browser windows, enter your text in the field below to share.</p>
 			
 			<input type="text" id="inputField" placeholder="Type or paste the text to share"/><br/>
 			
-			<button id="shareBtn">Share</button>
+			<!--<button id="shareBtn">Share</button>-->
+			
+			<div id="version">v 1.0.1</div>
 		</div>
 	
 		<script>
@@ -74,16 +115,23 @@
 			
 			window.onload = () => {
 				shareBtn.onclick = () => {
-					if(isSocketConnected){
-						let inputValue = inputField.value;
-						socket.send(inputValue);
-					}else{
-						console.log("Socket is not yet connected");
-						alert("Socket not connected");
-					}
+					shareInput();
 				};
 			}
-
+			
+			inputField.oninput = () => {
+				shareInput();
+			}
+			
+			function shareInput(){
+				if(isSocketConnected){
+					let inputValue = inputField.value;
+					socket.send(inputValue);
+				}else{
+					console.log("Socket is not yet connected");
+					alert("Socket not connected");
+				}
+			}
 		</script>
 	</body>
 </html>
