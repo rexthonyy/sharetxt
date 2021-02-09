@@ -2,24 +2,24 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="icon" href="icon.png" type="image/png"/>
-		<link rel="shortcut icon" href="icon.png" type="image/png"/>
-		<link type="image/x-icon" rel="icon" href="icon.png"/>
-		<title>Rex Share</title>
+		<link rel="icon" href="images/icon.png" type="image/png"/>
+		<link rel="shortcut icon" href="images/icon.png" type="image/png"/>
+		<link type="image/x-icon" rel="icon" href="images/icon.png"/>
+		<title>Copy Text</title>
 		<meta name="robots" content="index,follow"/>
 		<meta name="googlebot" content="index,follow"/>
 		<meta name="description" content="Share text between browser windows in real time"/>
 		<meta name="twitter:card" content="summary_large_image"/>
 		<meta name="twitter:site" content="@rexthony"/>
 		<meta name="twitter:creator" content="@rexthony"/>
-		<meta property="twitter:image" content="twitter-card.png"/>
-		<meta property="twitter:title" content="Rex Share"/>
+		<meta property="twitter:image" content="images/twitter-card.png"/>
+		<meta property="twitter:title" content="Copy Text"/>
 		<meta property="og:url" content="https://rexshare.herokuapp.com/"/>
 		<meta property="og:type" content="website"/>
-		<meta property="og:title" content="Share text between browsers"/>
+		<meta property="og:title" content="Share text between browser windows in real time"/>
 		<meta property="og:description" content="Share text between browser windows in real time."/>
-		<meta property="og:image" content="twitter-card.png"/>
-		<meta property="og:site_name" content="Rex Share"/>
+		<meta property="og:image" content="images/twitter-card.png"/>
+		<meta property="og:site_name" content="Copy Text"/>
 		<meta property="og:locale" content="en_US"/>
 		<link rel="canonical" href="https://rexshare.herokuapp.com/"/>
 		<meta name="next-head-count" content="18"/>
@@ -50,6 +50,10 @@
 				width: 80%;
 				margin: auto;
 				line-height: 32px;
+			}
+			#numConnections{
+				margin-top: 32px;
+				color: blue;
 			}
 			#inputC{
 				position: relative;
@@ -118,9 +122,9 @@
 
 	<body>
 		<div class="container">
-			<h1>Rex Share</h1>
+			<h1>Copy text</h1>
 			<p>Visit this website on two devices or browser windows, enter your text in the field below to share.</p>
-			
+			<p id="numConnections">0 clients connected</p>
 			<div id="inputC">
 				<input type="text" id="inputField" placeholder="Type or paste the text to share"/>
 				<span id="copyC"><i class="fas fa-copy"></i></span>
@@ -128,15 +132,17 @@
 			
 			<div id="createdBy">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony"><b>@rexthony</b></a></div>
 			
-			<div id="version">v 1.0.1</div>
+			<div id="version">v 1.1.0</div>
 		</div>
 	
 		<script>
-		
+			const ROOM_NAME = "<%= roomName %>";
+			
+			let numConnectionsElm = document.getElementById("numConnections");
 			let inputField = document.getElementById("inputField");
 			let copyBtn = document.getElementById("copyC");
 			
-			let socketUrl = "wss://rexshare.herokuapp.com/"; //"ws://127.0.0.1:3000";
+			let socketUrl = "wss://rexshare.herokuapp.com/"; "ws://127.0.0.1:3000"; 
 			let socket = new WebSocket(socketUrl);
 			
 			let isSocketConnected = false;
@@ -144,6 +150,11 @@
 			socket.onopen = e => {
 				isSocketConnected = true;
 				console.log("WebSocket connection established");
+				let inputValue = {
+					roomName: ROOM_NAME,
+					type: 'connection'
+				};
+				socket.send(JSON.stringify(inputValue));
 			};
 			
 			socket.onclose = e => {
@@ -151,11 +162,21 @@
 			};
 			
 			socket.onerror = e => {
-				console.log("WebSocket error ${`e`}");
+				console.log("WebSocket error");
 			};
 			
 			socket.onmessage = e => {
-				inputField.value = e.data;
+				let response = JSON.parse(e.data);
+				
+				if(response.type == 'msg'){
+					inputField.value = response.msg;
+				}else{
+					if(response.numUsers == 1){
+						numConnectionsElm.textContent = "1 client connected";
+					}else{
+						numConnectionsElm.textContent = response.numUsers + " clients connected";
+					}
+				}
 			};
 			
 			inputField.oninput = () => {
@@ -164,12 +185,18 @@
 			
 			copyBtn.onclick = () => {
 				copyToClipboard(inputField.value);
+				inputField.select();
+				inputField.setSelectionRange(0, this.inputField.value.length)
 			};
 			
 			function shareInput(){
 				if(isSocketConnected){
-					let inputValue = inputField.value;
-					socket.send(inputValue);
+					let inputValue = {
+						type: 'message',
+						roomName: ROOM_NAME,
+						text: inputField.value
+					};
+					socket.send(JSON.stringify(inputValue));
 				}else{
 					console.log("Socket is not yet connected");
 					alert("Socket not connected");

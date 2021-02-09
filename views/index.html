@@ -1,0 +1,189 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="icon" href="icon.png" type="image/png"/>
+		<link rel="shortcut icon" href="icon.png" type="image/png"/>
+		<link type="image/x-icon" rel="icon" href="icon.png"/>
+		<title>Rex Share</title>
+		<meta name="robots" content="index,follow"/>
+		<meta name="googlebot" content="index,follow"/>
+		<meta name="description" content="Share text between browser windows in real time"/>
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:site" content="@rexthony"/>
+		<meta name="twitter:creator" content="@rexthony"/>
+		<meta property="twitter:image" content="twitter-card.png"/>
+		<meta property="twitter:title" content="Rex Share"/>
+		<meta property="og:url" content="https://rexshare.herokuapp.com/"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:title" content="Share text between browsers"/>
+		<meta property="og:description" content="Share text between browser windows in real time."/>
+		<meta property="og:image" content="twitter-card.png"/>
+		<meta property="og:site_name" content="Rex Share"/>
+		<meta property="og:locale" content="en_US"/>
+		<link rel="canonical" href="https://rexshare.herokuapp.com/"/>
+		<meta name="next-head-count" content="18"/>
+		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+			body{
+				margin: 0;
+				padding: 0;
+				background-color: rgb(245, 256, 255);
+				font-family: 'Roboto Mono', monospace;
+			}
+			.container{
+				text-align: center;
+				width: 70%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			h1{
+				font-size: 32px;
+			}
+			p{
+				color: rgb(145, 156, 155);
+				width: 80%;
+				margin: auto;
+				line-height: 32px;
+			}
+			#inputC{
+				position: relative;
+				margin-top: 64px;
+			}
+			#inputField{
+				width: 100%;
+				padding: 16px;
+				padding-right: 60px;
+				font-size: 24px;
+				text-align: center;
+				border-radius: 16px;
+				border: 0;
+				border: 1px solid gray;
+				outline: none;
+			}
+			#inputField:focus{
+				border: 2px solid gray;
+			}
+			#copyC{
+				position: absolute;
+				right: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+				cursor: pointer;
+				font-size: 28px;
+				color: gray;
+			}
+			#copyC:hover{
+				color: blue;
+			}
+			button{
+				width: 100%;
+				padding: 18px 32px;
+				margin-top: 42px;
+				font-size: 16px;
+				border-radius: 16px;
+				border: 0;
+				background-color: rgb(60, 60, 233);
+				color: white;
+				letter-spacing: 8px;
+				outline: none;
+			}
+			button:hover{
+				cursor: pointer;
+				background-color: blue;
+			}
+			#version{
+				font-size: 8px;
+				color: rgb(165, 186, 285);
+				margin-top: 16px;
+			}
+			
+			#createdBy{
+				margin-top: 64px;
+				font-size: 12px;
+			}
+			
+			@media (max-width: 700px){
+				.container{
+					width: 90%;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Copy text</h1>
+			<p>Visit this website on two devices or browser windows, enter your text in the field below to share.</p>
+			
+			<div id="inputC">
+				<input type="text" id="inputField" placeholder="Type or paste the text to share"/>
+				<span id="copyC"><i class="fas fa-copy"></i></span>
+			</div>
+			
+			<div id="createdBy">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony"><b>@rexthony</b></a></div>
+			
+			<div id="version">v 1.0.1</div>
+		</div>
+	
+		<script>
+		
+			let inputField = document.getElementById("inputField");
+			let copyBtn = document.getElementById("copyC");
+			
+			let socketUrl = "wss://rexshare.herokuapp.com/"; //"ws://127.0.0.1:3000";
+			let socket = new WebSocket(socketUrl);
+			
+			let isSocketConnected = false;
+			
+			socket.onopen = e => {
+				isSocketConnected = true;
+				console.log("WebSocket connection established");
+			};
+			
+			socket.onclose = e => {
+				console.log("Websocket is closed");
+			};
+			
+			socket.onerror = e => {
+				console.log("WebSocket error ${`e`}");
+			};
+			
+			socket.onmessage = e => {
+				inputField.value = e.data;
+			};
+			
+			inputField.oninput = () => {
+				shareInput();
+			};
+			
+			copyBtn.onclick = () => {
+				copyToClipboard(inputField.value);
+			};
+			
+			function shareInput(){
+				if(isSocketConnected){
+					let inputValue = inputField.value;
+					socket.send(inputValue);
+				}else{
+					console.log("Socket is not yet connected");
+					alert("Socket not connected");
+				}
+			}
+			
+			function copyToClipboard(text){
+				var dummy = document.createElement("textarea");
+				document.body.appendChild(dummy);
+				dummy.value = text;
+				dummy.select();
+				document.execCommand("copy");
+				document.body.removeChild(dummy);
+			}
+		</script>
+	</body>
+</html>
