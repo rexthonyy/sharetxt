@@ -5,7 +5,7 @@
 		<link rel="icon" href="images/icon.png" type="image/png"/>
 		<link rel="shortcut icon" href="images/icon.png" type="image/png"/>
 		<link type="image/x-icon" rel="icon" href="images/icon.png"/>
-		<title>Share Text</title>
+		<title>Share TXT</title>
 		<meta name="robots" content="index,follow"/>
 		<meta name="googlebot" content="index,follow"/>
 		<meta name="description" content="Share text between browser windows in real time"/>
@@ -13,15 +13,15 @@
 		<meta name="twitter:site" content="@rexthony"/>
 		<meta name="twitter:creator" content="@rexthony"/>
 		<meta property="twitter:image" content="images/twitter-card.png"/>
-		<meta property="twitter:title" content="Share Text"/>
-		<meta property="og:url" content="https://rexshare.herokuapp.com/"/>
+		<meta property="twitter:title" content="Share TXT"/>
+		<meta property="og:url" content="http://sharetxt.live/"/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:title" content="Share text between browser windows in real time"/>
 		<meta property="og:description" content="Share text between browser windows in real time."/>
 		<meta property="og:image" content="images/twitter-card.png"/>
-		<meta property="og:site_name" content="Share Text"/>
+		<meta property="og:site_name" content="Share TXT"/>
 		<meta property="og:locale" content="en_US"/>
-		<link rel="canonical" href="https://sharetext.live/"/>
+		<link rel="canonical" href="http://sharetxt.live/"/>
 		<meta name="next-head-count" content="18"/>
 		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
 		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
@@ -45,9 +45,10 @@
 			}
 			h1{
 				font-size: 32px;
+				color: rgb(50, 50, 50);
 			}
 			p{
-				color: rgb(145, 156, 155);
+				color: #7DC1C1;
 				width: 80%;
 				margin: auto;
 				line-height: 32px;
@@ -56,7 +57,7 @@
 				margin-top: 32px;
 			}
 			#numConnections, #roomName{
-				color: blue;
+				color: #7DC12B;
 			}
 			#inputC{
 				position: relative;
@@ -86,7 +87,7 @@
 				color: gray;
 			}
 			#copyC:hover{
-				color: blue;
+				color: #7DC12B;
 			}
 			button{
 				width: 100%;
@@ -102,7 +103,7 @@
 			}
 			button:hover{
 				cursor: pointer;
-				background-color: blue;
+				background-color: #7DC12B;
 			}
 			#version{
 				font-size: 12px;
@@ -120,12 +121,26 @@
 					width: 90%;
 				}
 			}
+			
+			::-moz-selection { /* Code for Firefox */
+			  color: white;
+			  background: #7DC12B;
+			}
+
+			::selection {
+			  color: white;
+			  background: #7DC12B;
+			}
+			
+			.secondaryColor{
+				color: #7DC12B;
+			}
 		</style>
 	</head>
 
 	<body>
 		<div class="container">
-			<h1>Share text</h1>
+			<h1>Share TXT</h1>
 			<p>Visit this website on two devices or browser windows, enter your text in the field below to share.</p>
 			<p id="connectionDetailsC"><span id="numConnections">0 clients</span> connected in <span id="roomName">Default</span></p>
 			<div id="inputC">
@@ -133,9 +148,9 @@
 				<span id="copyC"><i class="fas fa-copy"></i></span>
 			</div>
 			
-			<div id="createdBy">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony"><b>@rexthony</b></a></div>
+			<div id="createdBy">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony"><b class="secondaryColor">@rexthony</b></a></div>
 			
-			<div id="version">v 1.1.1</div>
+			<div id="version">v 1.1.2</div>
 		</div>
 	
 		<script>
