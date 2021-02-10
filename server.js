@@ -16,7 +16,7 @@ server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 const wss = new WebSocket.Server({ server });
 
 app.get('/', (req, res) => {
-	res.redirect('/global');
+	res.redirect('/default');
 });
 
 app.get('/:room', (req, res) => {
