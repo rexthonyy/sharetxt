@@ -43,7 +43,6 @@ $ npm install sharetxt
 * **1.0.0** (2021-2-8): Initial release
 
 ## People
----
 These are people who contributed to project in one way or the other :heart:
 
 *	[@101TWOTWO](https://twitter.com/101TWOTWO)
@@ -56,6 +55,7 @@ These are people who contributed to project in one way or the other :heart:
 *	[@iamajibolasegun](https://twitter.com/iamajibolasegun)
 *	[@jay_jm](https://twitter.com/jay_jm)
 *	[@kelechithe3rd](https://twitter.com/kelechithe3rd)
+*	[@Lovelynfin00](https://twitter.com/Lovelynfin00)
 *	[@PharmSaheed](https://twitter.com/PharmSaheed)
 *	[@Srushtika](https://twitter.com/Srushtika)
 *	[@SudhamJayanthi](https://twitter.com/SudhamJayanthi)
