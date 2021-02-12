@@ -59,3 +59,6 @@ These are people who contributed to project in one way or the other :heart:
 *	[@PharmSaheed](https://twitter.com/PharmSaheed)
 *	[@Srushtika](https://twitter.com/Srushtika)
 *	[@SudhamJayanthi](https://twitter.com/SudhamJayanthi)
+
+## Notice
+**ShareTXT will be launching on product hunt on 13th feb 2021 at 3am PST. Your support will be very much appreciated.**
