@@ -47,6 +47,7 @@ These are people who contributed to project in one way or the other :heart:
 
 *	[@101TWOTWO](https://twitter.com/101TWOTWO)
 *	[@Abisalde](https://twitter.com/Abisalde)
+*	[@emeryes1](https://twitter.com/emeryes1)
 *	[@Errson2](https://twitter.com/Errson)
 *	[@favouriteJome1](https://twitter.com/favouriteJome1)
 *	[@frankiefab100](https://twitter.com/frankiefab100)
