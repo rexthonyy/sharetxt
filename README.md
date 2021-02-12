@@ -1,6 +1,6 @@
 # ShareTXT
 
-**A website to Share text between browser windows in real time.**
+**A website to Share text between browsers in real time.**
 
 ## Introduction
 
@@ -57,9 +57,10 @@ These are people who contributed to project in one way or the other :heart:
 *	[@jay_jm](https://twitter.com/jay_jm)
 *	[@kelechithe3rd](https://twitter.com/kelechithe3rd)
 *	[@Lovelyfin00](https://twitter.com/@lovelyfin00)
+*	[@Mohamme18677371](https://twitter.com/Mohamme18677371)
 *	[@PharmSaheed](https://twitter.com/PharmSaheed)
 *	[@Srushtika](https://twitter.com/Srushtika)
 *	[@SudhamJayanthi](https://twitter.com/SudhamJayanthi)
 
 ## Notice
-**ShareTXT will be launching on product hunt on 13th feb 2021 at 3am PST. Your support will be very much appreciated.**
+**ShareTXT will be launching on [product hunt](https://www.producthunt.com/posts/share-txt?utm_source=github&utm_medium=github) on 13th feb 2021 at 3am PST. Your support will be very much appreciated.**
