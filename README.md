@@ -55,7 +55,7 @@ These are people who contributed to project in one way or the other :heart:
 *	[@iamajibolasegun](https://twitter.com/iamajibolasegun)
 *	[@jay_jm](https://twitter.com/jay_jm)
 *	[@kelechithe3rd](https://twitter.com/kelechithe3rd)
-*	[@Lovelynfin00](https://twitter.com/Lovelynfin00)
+*	[@Lovelyfin00](https://twitter.com/@lovelyfin00)
 *	[@PharmSaheed](https://twitter.com/PharmSaheed)
 *	[@Srushtika](https://twitter.com/Srushtika)
 *	[@SudhamJayanthi](https://twitter.com/SudhamJayanthi)
