@@ -52,7 +52,7 @@ These are people who contributed to project in one way or the other :heart:
 *	[@favouriteJome1](https://twitter.com/favouriteJome1)
 *	[@frankiefab100](https://twitter.com/frankiefab100)
 *	[@heisdeku](https://twitter.com/heisdeku)
-*	[@iam_ceo](https://twitter.com/iam_ceo)
+*	[@iam__ceo](https://twitter.com/iam__ceo)
 *	[@iamajibolasegun](https://twitter.com/iamajibolasegun)
 *	[@jay_jm](https://twitter.com/jay_jm)
 *	[@kelechithe3rd](https://twitter.com/kelechithe3rd)
