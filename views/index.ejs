@@ -24,7 +24,7 @@
 		<link rel="canonical" href="http://sharetxt.live/"/>
 		<meta name="next-head-count" content="18"/>
 		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>-->
 		
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
@@ -174,7 +174,7 @@
 			let copyBtn = document.getElementById("copyC");
 			
 			function establishSocketConnection(){
-				let socketUrl =  "wss://rexshare.herokuapp.com/"; "ws://127.0.0.1:3000";
+				let socketUrl =  "wss://rexshare.herokuapp.com/"; //"ws://127.0.0.1:3000";
 				let socket = new WebSocket(socketUrl);
 				
 				let isSocketConnected = false;
@@ -205,8 +205,9 @@
 					if(response.type == 'msg'){	
 						isLastClientToInputData = false;
 						//console.log("received encrypted msg : " + response.msg);
-						decryptedMsg = CryptoJS.AES.decrypt(response.msg, ROOM_NAME).toString(CryptoJS.enc.Utf8);
-						inputField.value = decryptedMsg;
+						/*decryptedMsg = CryptoJS.AES.decrypt(response.msg, ROOM_NAME).toString(CryptoJS.enc.Utf8);
+						inputField.value = decryptedMsg;*/
+						inputField.value = response.msg;
 					}else{
 						if(response.numUsers == 1){
 							numConnectionsElm.textContent = "1 client";
@@ -233,12 +234,13 @@
 				function shareInput(){
 					if(isSocketConnected){
 						isLastClientToInputData = true;
-						encryptedMsg = CryptoJS.AES.encrypt(inputField.value, ROOM_NAME).toString();
+						//encryptedMsg = CryptoJS.AES.encrypt(inputField.value, ROOM_NAME).toString();
 						//console.log("sent encrypted msg : " + encryptedMsg);
 						let inputValue = {
 							type: 'message',
 							roomName: ROOM_NAME,
-							text: encryptedMsg
+							//text: encryptedMsg
+							text: inputField.value
 						};
 						socket.send(JSON.stringify(inputValue));
 					}else{
