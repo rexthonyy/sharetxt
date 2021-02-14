@@ -32,6 +32,8 @@ $ npm install sharetxt
   12.   When a user closes the web page, the web socket connection is terminated and all connected clients to that route are notified.
   
 ## Change log
+* **1.3.0** (2021-2-14): Added encryption to messages sent through to the websocket
+* **1.2.3** (2021-2-14): Replaced font awesome copy icon with png
 * **1.2.2** (2021-2-12): Created the documentation
 * **1.2.1** (2021-2-12): Fixed the closing of web socket connection after some period of inactivity
 * **1.2.0** (2021-2-11): Added feature to notify the last client that sends a message in a route to resend the message when a new client connects to the route. 

@@ -24,9 +24,8 @@
 		<link rel="canonical" href="http://sharetxt.live/"/>
 		<meta name="next-head-count" content="18"/>
 		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
-		<script async defer data-domain="rexshare.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
-		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+		
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
 			body{
@@ -85,9 +84,13 @@
 				cursor: pointer;
 				font-size: 28px;
 				color: gray;
+				content: url("images/copy.png");
+				width: 35px;
+				height: 35px;
 			}
 			#copyC:hover{
 				color: #7DC12B;
+				content: url("images/copy_active.png");
 			}
 			button{
 				width: 100%;
@@ -123,6 +126,10 @@
 				#inputField{
 					font-size: 16px;
 				}
+				#copyC{
+					width: 28px;
+					height: 28px;
+				}
 			}
 			
 			::-moz-selection { /* Code for Firefox */
@@ -148,10 +155,10 @@
 			<p id="connectionDetailsC"><span id="numConnections">0 clients</span> connected in <span id="roomName">Default</span></p>
 			<div id="inputC">
 				<input type="text" id="inputField" placeholder="Type or paste the text to share"/>
-				<span id="copyC"><i class="fas fa-copy"></i></span>
+				<span id="copyC"></span>
 			</div>
 			
-			<div id="version">v 1.2.2</div>
+			<div id="version">v 1.3.0</div>
 			
 			<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=light" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 250px; height: 54px; margin-top: 32px;" width="250" height="54" /></a>
 			
@@ -167,15 +174,16 @@
 			let copyBtn = document.getElementById("copyC");
 			
 			function establishSocketConnection(){
-				let socketUrl = "wss://rexshare.herokuapp.com/"; //"ws://127.0.0.1:3000"; 
+				let socketUrl =  "wss://rexshare.herokuapp.com/"; "ws://127.0.0.1:3000";
 				let socket = new WebSocket(socketUrl);
 				
 				let isSocketConnected = false;
 				let isLastClientToInputData = false;
+				let encryptedMsg = decryptedMsg = "";
 				
 				socket.onopen = e => {
 					isSocketConnected = true;
-					console.log("WebSocket connection established");
+					//console.log("WebSocket connection established");
 					let inputValue = {
 						roomName: ROOM_NAME,
 						type: 'connection'
@@ -194,10 +202,11 @@
 				
 				socket.onmessage = e => {
 					let response = JSON.parse(e.data);
-
 					if(response.type == 'msg'){	
 						isLastClientToInputData = false;
-						inputField.value = response.msg;
+						//console.log("received encrypted msg : " + response.msg);
+						decryptedMsg = CryptoJS.AES.decrypt(response.msg, ROOM_NAME).toString(CryptoJS.enc.Utf8);
+						inputField.value = decryptedMsg;
 					}else{
 						if(response.numUsers == 1){
 							numConnectionsElm.textContent = "1 client";
@@ -224,10 +233,12 @@
 				function shareInput(){
 					if(isSocketConnected){
 						isLastClientToInputData = true;
+						encryptedMsg = CryptoJS.AES.encrypt(inputField.value, ROOM_NAME).toString();
+						//console.log("sent encrypted msg : " + encryptedMsg);
 						let inputValue = {
 							type: 'message',
 							roomName: ROOM_NAME,
-							text: inputField.value
+							text: encryptedMsg
 						};
 						socket.send(JSON.stringify(inputValue));
 					}else{
