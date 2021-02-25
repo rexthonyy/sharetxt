@@ -45,7 +45,7 @@ $ npm install sharetxt
 * **1.0.0** (2021-2-8): Initial release
 
 ## People
-These are people who contributed to project in one way or the other :heart:
+These are people who contributed to the project in one way or the other :heart:
 
 *	[@101TWOTWO](https://twitter.com/101TWOTWO)
 *	[@Abisalde](https://twitter.com/Abisalde)
@@ -65,4 +65,4 @@ These are people who contributed to project in one way or the other :heart:
 *	[@SudhamJayanthi](https://twitter.com/SudhamJayanthi)
 
 ## Notice
-ShareTXT [launched on product hunt](https://www.producthunt.com/posts/share-txt?utm_source=github&utm_medium=github) on the 13th feb 2021 at 3am PST. Thank you for the support :heart:
+ShareTXT [launched on product hunt](https://www.producthunt.com/posts/share-txt?utm_source=github&utm_medium=github) on the 13th feb 2021 at Sat 3am PST. Thank you for the support :heart:
