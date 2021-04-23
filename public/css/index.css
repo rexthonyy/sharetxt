@@ -1,0 +1,290 @@
+@import 'rex.css';
+@import 'rex-size.css';
+@import 'rex-color.css';
+@import 'rex-background.css';
+@import 'rex-font-size.css';
+@import 'rex-margin.css';
+@import 'rex-padding.css';
+@import 'rex-border.css';
+@import 'rex-display.css';
+@import 'rex-alignment.css';
+@import 'rex-dom.css';
+@import 'rex-toggle-switch.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body{
+	font-family: 'Inter', sans-serif;
+}
+
+textarea{
+	font-family: 'Inter', sans-serif;
+}
+
+/*General*/
+.custom-responsive-container{
+	padding: 0 32px;
+}
+
+.custom-input-field-container{
+	padding: 32px;
+}
+
+.custom-nav-height{
+	height: 70px;
+}
+
+.custom-display-height{
+	height: calc(100vh - 70px);
+}
+
+.custom-redirect{
+	display: none;
+}
+.custom-path:hover + .custom-redirect{
+	display: inline;
+	width: 14px;
+	height: 14px;
+}
+
+.custom-editor-input-height{
+	height: calc(100% - 70px);
+}
+
+.custom-editor-btn-height{
+	height: 70px;
+}
+
+.custom-modal-background{
+	display: none;
+	/*display: flex;*/
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.custom-modal{
+	display: none;
+	width: 50%;
+}
+
+/*.custom-modal:nth-child(2){
+	display: none;
+}*/
+
+
+/*Light mode*/
+/*Background color of the whole screen*/
+.custom-lm-container{
+	display: none;
+	background-color: rgb(246, 251, 238);
+}
+
+.custom-lm-background-color{
+	background-color: rgb(246, 251, 238);
+}
+
+.custom-lm-color{
+	color: rgb(71, 190, 185);
+}
+
+/*Background color of the navigation menu*/
+.custom-lm-nav-background-color{
+	background-color: transparent;
+}
+
+/*Color of the app name*/
+.custom-lm-app-name-color{
+	color: rgb(22, 6, 71);
+}
+
+/*Color of the light mode text*/
+.custom-lm-mode-color{
+	color: rgb(22, 6, 71);
+}
+
+/*Color of the hero text color*/
+.custom-lm-title-color{
+	color: rgb(22, 6, 71);
+}
+
+/*Color of the connected clients*/
+.custom-lm-primary-color{
+	color: rgb(22, 6, 71);
+	font-weight: bold;
+}
+
+/*Background color of the editor input field*/
+.custom-lm-editor-background-color{
+	background-color: rgb(228, 248, 243);
+}
+
+/*Version color*/
+.custom-lm-version-color{
+	color: rgb(141, 216, 205);
+}
+
+/*The copy button*/
+.custom-lm-editor-btn{
+	background-color: rgb(71, 190, 185);
+}
+
+.custom-lm-editor-btn:hover{
+	background-color: rgb(89, 234, 227);
+}
+
+/*The background color of the modal nav*/
+.custom-lm-modal-nav-background-color{
+	background-color: rgb(71, 190, 185);
+}
+
+/*The color of the text in the modal nav*/
+.custom-lm-modal-nav-color{
+	color: white;
+}
+
+/*The modal input*/
+.custom-lm-modal-input{
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid rgb(80, 80, 80);
+}
+
+.custom-lm-modal-input:focus{
+	border-bottom: 1px solid rgb(71, 190, 185);
+}
+
+
+
+
+/*Dark mode*/
+/*Background color of the whole screen*/
+.custom-dm-container{
+	display: block;
+	background-color: rgb(16, 29, 37);
+}
+
+/*Background color of the navigation menu*/
+.custom-dm-nav-background-color{
+	background-color: transparent;
+}
+
+/*Color of the app name*/
+.custom-dm-app-name-color{
+	color: rgb(241, 241, 241);
+}
+
+/*Color of the night mode text*/
+.custom-dm-mode-color{
+	color: rgb(211, 215, 218);
+}
+
+/*Color of the hero text color*/
+.custom-dm-title-color{
+	color: rgb(211, 215, 218);
+}
+
+/*Color of the connected clients*/
+.custom-dm-primary-color{
+	color: rgb(71, 190, 185);
+}
+
+/*Background color of the editor input field*/
+.custom-dm-editor-background-color{
+	background-color: rgb(35, 45, 54);
+}
+
+/*Version color*/
+.custom-dm-version-color{
+	color: rgb(125, 204, 220);
+}
+
+/*Editor input*/
+.custom-dm-input-field{
+	color: rgb(211, 215, 218);
+}
+
+/*The copy button*/
+.custom-dm-editor-btn{
+	background-color: rgb(0, 176, 156);
+}
+
+.custom-dm-editor-btn:hover{
+	background-color: rgb(0, 224, 198);
+}
+
+.custom-dm-modal-nav-background-color{
+	background-color: rgb(0, 176, 156);
+}
+
+.custom-dm-modal-nav-color{
+	color: white;
+}
+
+.custom-dm-background-color{
+	background-color: rgb(35, 45, 54);
+}
+
+.custom-dm-color{
+	color: rgb(71, 190, 185);
+}
+
+.custom-dm-modal-input{
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid rgb(80, 80, 80);
+	color: white;
+}
+
+.custom-dm-modal-input:focus{
+	border-bottom: 1px solid rgb(71, 190, 185);
+}
+
+@media (max-width: 700px) {
+	.custom-responsive-container{
+		padding: 0 16px;
+	}
+	.custom-input-field-container{
+		padding: 16px;
+	}
+	.custom-display-grid{
+		display: block;
+	}
+	.custom-hero-container{
+		height: auto;
+	}
+	.custom-hero-text{
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 32px;
+	}
+	.custom-modal{
+		width: 80%;
+	}
+}
+
+@media (max-width: 625px) {
+	.custom-icon-size{
+		width: 35px;
+		height: 35px;
+		margin-right: 8px;
+	}
+}
+
+@media (max-width: 400px) {
+	.custom-lm-mode-color, .custom-dm-mode-color{
+		display: none;
+	}
+	.custom-lm-version-color{
+		display: block;
+	}
+	.custom-hero-text{
+		font-size: 20px;
+		margin-top: 16px;
+		width: 80%;
+	}
+	.custom-modal{
+		width: 90%;
+	}
+}
+

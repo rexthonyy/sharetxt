@@ -1,0 +1,79 @@
+.rex-center-div-relative{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.rex-center-relative-div-vertical{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.rex-vertical-align{
+	vertical-align: middle;
+}
+
+.rex-vertical-align-top{
+	vertical-align: top;
+}
+
+.rex-vertical-align-bottom{
+	vertical-align: bottom;
+}
+
+.rex-vertical-align-span{
+	min-height: 100px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.rex-center-div-horizontal{
+	margin: 0 auto;
+}
+
+.rex-center-absolute-div{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.rex-center-absolute-div-vertical{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.rex-float-left{
+	float: left;
+}
+
+.rex-float-right{
+	float: right;
+}
+
+.rex-clear-both{
+	clear: both;
+}
+
+.rex-clear-left{
+	clear: left;
+}
+
+.rex-clear-right{
+	clear: right;
+}
+
+.rex-center-text{
+	text-align: center;
+}
+
+.rex-text-align-left{
+	text-align: left;
+}
+
+.rex-text-align-right{
+	text-align: right;
+}

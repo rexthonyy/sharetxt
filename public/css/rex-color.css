@@ -1,0 +1,69 @@
+/*application defined*/
+.rex-color-primary{
+	color: rgb(56, 89, 220);
+}
+
+.rex-color-secondary{
+	color: rgb(56, 89, 220);
+}
+
+.rex-color-tertiary{
+	color: rgb(56, 89, 220);
+}
+
+.rex-color-link{
+	color: rgb(56, 89, 220);
+}
+
+.rex-color-danger{
+	color: rgb(250, 10, 10);
+}
+
+/*default colors*/
+.rex-color-white{
+	color: white;
+}
+
+.rex-color-black{
+	color: black;
+}
+
+.rex-color-blacktint{
+	color: rgb(80, 80, 80);
+}
+
+.rex-color-blue{
+	color: blue;
+}
+
+.rex-color-gray{
+	color: gray;
+}
+
+.rex-color-green{
+	color: green;
+}
+
+.rex-color-green-pure{
+	color: rgb(0, 230, 0);
+}
+
+.rex-color-lightgray{
+	color: rgb(180, 180, 180);
+}
+
+.rex-color-darkgray{
+	color: rgb(100, 100, 100);
+}
+
+.rex-color-red{
+	color: red;
+}
+
+.rex-color-orange{
+	color: orange;
+}
+
+.rex-color-pink{
+	color: pink;
+}

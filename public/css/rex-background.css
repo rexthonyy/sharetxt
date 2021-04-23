@@ -1,0 +1,82 @@
+/*Application defined*/
+.rex-background-primary{
+	background-color: rgb(23, 52, 97);
+}
+
+.rex-background-secondary{
+	background-color: rgb(32, 32, 32);
+}
+
+.rex-background-tertiary{
+	background-color: rgb(56, 89, 220)
+}
+
+.rex-background-input{
+	background-color: rgb(243, 244, 246);
+}
+
+.rex-background-custom-1{
+	background-color: rgb(229, 231, 235);
+}
+
+.rex-background-body{
+	background-color: rgb(244, 245, 255);
+}
+
+.rex-background-dashboard-source-indicator{
+	background-color: rgba(239, 246, 255);
+}
+
+/*Default*/
+.rex-background-red{
+	background-color: red;
+}
+
+.rex-background-blue{
+	background-color: blue;
+}
+
+.rex-background-green{
+	background-color: rgb(0, 200, 0);
+}
+
+.rex-background-yellow{
+	background-color: yellow;
+}
+
+.rex-background-orange{
+	background-color: orange;
+}
+
+.rex-background-cyan{
+	background-color: cyan;
+}
+
+.rex-background-pink{
+	background-color: pink;
+}
+
+.rex-background-darkgray{
+	background-color: rgb(100, 100, 100);
+}
+
+.rex-background-gray{
+	background-color: rgb(215, 215, 215);
+}
+
+.rex-background-transparent{
+	background-color: transparent;
+}
+
+.rex-background-white{
+	background-color: white;
+}
+
+.rex-background-black{
+	background-color: black;
+}
+
+.rex-selectable-item-background:hover, .rex-item-selected{
+	background-color: rgba(180, 180, 180, 0.2);
+	transition: all .3s;
+}

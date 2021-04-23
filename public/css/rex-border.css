@@ -1,0 +1,119 @@
+.rex-border{
+	border: 1px solid black;
+}
+
+.rex-border-blue{
+	border: 1px solid blue;
+}
+
+.rex-border-gray{
+	border: 1px solid rgb(64, 64, 64);
+}
+
+.rex-border-lightgray{
+	border: 1px solid rgb(235, 235, 235);
+}
+
+.rex-border-green{
+	border: 1px solid green;
+}
+
+.rex-border-red{
+	border: 1px solid red;
+}
+
+.rex-border-orange{
+	border: 1px solid orange;
+}
+
+.rex-border-pink{
+	border: 1px solid pink;
+}
+
+.rex-no-border{
+	border: 0;
+}
+
+.rex-border-top-gray{
+	border-top: 1px solid rgb(164, 164, 164);
+}
+
+.rex-border-top-black{
+	border-top: 1px solid rgb(64, 64, 64);
+}
+
+.rex-border-bottom-gray{
+	border-bottom: 1px solid rgb(164, 164, 164);
+}
+
+.rex-border-bottom-lightgray{
+	border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.rex-border-bottom-black{
+	border-bottom: 1px solid rgb(64, 64, 64);
+}
+
+.rex-border-right-gray{
+	border-right: 1px solid rgb(210, 210, 210);
+}
+
+.rex-border-right-lightgray{
+	border-right: 1px solid rgb(235, 235, 235);
+}
+
+.rex-curDiv-50pp{
+	border-radius: 50%;
+}
+
+.rex-curDiv-0{
+	border-radius: 0;
+}
+
+.rex-curDiv-4px{
+	border-radius: 4px;
+}
+
+.rex-curDiv-8px{
+	border-radius: 8px;
+}
+
+.rex-curDiv-16px{
+	border-radius: 16px;
+}
+
+.rex-curDiv-30px{
+	border-radius: 30px;
+}
+
+.rex-curDiv-32px{
+	border-radius: 32px;
+}
+
+.rex-curDiv-40px{
+	border-radius: 40px;
+}
+
+.rex-curDiv-50px{
+	border-radius: 50px;
+}
+
+.rex-curDiv-64px{
+	border-radius: 64px;
+}
+
+.rex-curDiv-tl-8px{
+	border-top-left-radius: 8px;
+}
+
+.rex-curDiv-tr-8px{
+	border-top-right-radius: 8px;
+}
+
+.rex-curDiv-bl-8px{
+	border-bottom-left-radius: 8px;
+}
+
+.rex-curDiv-br-8px{
+	border-bottom-right-radius: 8px;
+}

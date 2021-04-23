@@ -1,0 +1,89 @@
+*{
+	padding: 0;
+	margin: 0;
+	outline: none;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/*Highlight color*/
+::-moz-selection { 
+	color: white;
+	background: rgb(159, 234, 230);
+}
+
+::selection {
+	color: white;
+	background: rgb(159, 234, 230);
+}
+
+.rex-underline-onhover:hover{
+	text-decoration: underline;
+}
+
+.rex-underline{
+	text-decoration: underline;
+}
+
+.rex-weight-normal{
+	font-weight: normal;
+}
+
+.rex-weight-bold{
+	font-weight: bold;
+}
+
+.rex-text-underline{
+	text-decoration: underline;
+}
+
+.rex-transition-width-250ms{
+	transition: width 0.25s;
+}
+
+.rex-space-0{
+	height: 0;
+}
+
+.rex-space-2pp{
+	height: 2%;
+}
+
+.rex-space-8px{
+	padding: 4px;
+}
+
+.rex-space-16px{
+	padding: 8px;
+}
+
+.rex-space-32px{
+	padding: 16px;
+}
+
+.rex-space-64px{
+	padding: 32px;
+}
+
+.rex-space-10pp{
+	height: 10%;
+}
+
+.rex-nowrap{
+	white-space: nowrap;
+}
+
+.rex-text-overflow-ellipses{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.rex-noresize{
+	resize: none;
+}

@@ -1,265 +1,204 @@
 <html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<link rel="icon" href="images/icon.png" type="image/png"/>
-		<link rel="shortcut icon" href="images/icon.png" type="image/png"/>
-		<link type="image/x-icon" rel="icon" href="images/icon.png"/>
-		<title>Share TXT</title>
-		<meta name="robots" content="index,follow"/>
-		<meta name="googlebot" content="index,follow"/>
-		<meta name="description" content="Share text between browser windows in real time"/>
-		<meta name="twitter:card" content="summary_large_image"/>
-		<meta name="twitter:site" content="@rexthony"/>
-		<meta name="twitter:creator" content="@rexthony"/>
-		<meta property="twitter:image" content="images/twitter-card.png"/>
-		<meta property="twitter:title" content="Share TXT"/>
-		<meta property="og:url" content="http://sharetxt.live/"/>
-		<meta property="og:type" content="website"/>
-		<meta property="og:title" content="Share text between browser windows in real time"/>
-		<meta property="og:description" content="Share text between browser windows in real time."/>
-		<meta property="og:image" content="images/twitter-card.png"/>
-		<meta property="og:site_name" content="Share TXT"/>
-		<meta property="og:locale" content="en_US"/>
-		<link rel="canonical" href="http://sharetxt.live/"/>
-		<meta name="next-head-count" content="18"/>
-		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>-->
-		<script data-host="https://qatir.co.uk" data-dnt="false" src="https://qatir.co.uk/js/script.js" id="ZwSg9rf6GA" async defer></script>
-		<script async defer data-domain="sharetxthq.live" src="https://plausible.io/js/plausible.js"></script>
-		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
-			body{
-				margin: 0;
-				padding: 0;
-				background-color: rgb(245, 256, 255);
-				font-family: 'Roboto Mono', monospace;
-			}
-			.container{
-				text-align: center;
-				width: 70%;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
-			h1{
-				font-size: 32px;
-				color: rgb(50, 50, 50);
-			}
-			p{
-				color: #7DC1C1;
-				width: 80%;
-				margin: auto;
-				line-height: 32px;
-			}
-			#connectionDetailsC{
-				margin-top: 32px;
-			}
-			#numConnections, #roomName{
-				color: #7DC12B;
-			}
-			#inputC{
-				position: relative;
-				margin-top: 64px;
-			}
-			#inputField{
-				width: 100%;
-				padding: 16px;
-				padding-right: 60px;
-				font-size: 24px;
-				text-align: center;
-				border-radius: 16px;
-				border: 0;
-				border: 1px solid gray;
-				outline: none;
-			}
-			#inputField:focus{
-				border: 2px solid gray;
-			}
-			#copyC{
-				position: absolute;
-				right: 20px;
-				top: 50%;
-				transform: translateY(-50%);
-				cursor: pointer;
-				font-size: 28px;
-				color: gray;
-				content: url("images/copy.png");
-				width: 35px;
-				height: 35px;
-			}
-			#copyC:hover{
-				color: #7DC12B;
-				content: url("images/copy_active.png");
-			}
-			button{
-				width: 100%;
-				padding: 18px 32px;
-				margin-top: 42px;
-				font-size: 16px;
-				border-radius: 16px;
-				border: 0;
-				background-color: rgb(60, 60, 233);
-				color: white;
-				letter-spacing: 8px;
-				outline: none;
-			}
-			button:hover{
-				cursor: pointer;
-				background-color: #7DC12B;
-			}
-			#version{
-				margin-top: 32px;
-				font-size: 12px;
-				color: rgb(165, 186, 285);
-			}
-			
-			#createdBy{
-				margin-top: 32px;
-				font-size: 12px;
-			}
-			
-			@media (max-width: 700px){
-				.container{
-					width: 90%;
-				}
-				#inputField{
-					font-size: 16px;
-				}
-				#copyC{
-					width: 28px;
-					height: 28px;
-				}
-			}
-			
-			::-moz-selection { /* Code for Firefox */
-			  color: white;
-			  background: #7DC12B;
-			}
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="icon" href="images/icon.png" type="image/png"/>
+	<link rel="shortcut icon" href="images/icon.png" type="image/png"/>
+	<link type="image/x-icon" rel="icon" href="images/icon.png"/>
+	<title>Share TXT</title>
+	<meta name="robots" content="index,follow"/>
+	<meta name="googlebot" content="index,follow"/>
+	<meta name="description" content="Share text between browser windows in real time"/>
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="@rexthony"/>
+	<meta name="twitter:creator" content="@rexthony"/>
+	<meta property="twitter:image" content="images/twitter-card.png"/>
+	<meta property="twitter:title" content="Share TXT"/>
+	<meta property="og:url" content="http://sharetxt.live/"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="Share text between browser windows in real time"/>
+	<meta property="og:description" content="Share text between browser windows in real time."/>
+	<meta property="og:image" content="images/twitter-card.png"/>
+	<meta property="og:site_name" content="Share TXT"/>
+	<meta property="og:locale" content="en_US"/>
+	<link rel="canonical" href="http://sharetxt.live/"/>
+	<meta name="next-head-count" content="18"/>
+	<link type="text/css" rel="stylesheet" href="css/index.css"/>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script data-host="https://qatir.co.uk" data-dnt="false" src="https://qatir.co.uk/js/script.js" id="ZwSg9rf6GA" async defer></script>
+	<script async defer data-domain="sharetxthq.live" src="https://plausible.io/js/plausible.js"></script>
+	<script>const ROOM_NAME = "<%= roomName %>";</script>
+</head>
 
-			::selection {
-			  color: white;
-			  background: #7DC12B;
-			}
-			
-			.secondaryColor{
-				color: #7DC12B;
-			}
-		</style>
-	</head>
-
-	<body>
-		<div class="container">
-			<h1>Share TXT</h1>
-			<p>Visit this website on two devices or browser windows, enter your text in the field below to share.</p>
-			<p id="connectionDetailsC"><span id="numConnections">0 clients</span> connected in <span id="roomName">Default</span></p>
-			<div id="inputC">
-				<input type="text" id="inputField" placeholder="Type or paste the text to share"/>
-				<span id="copyC"></span>
-			</div>
-			
-			<div id="version">v 1.3.0</div>
-			
-			<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=light" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 250px; height: 54px; margin-top: 32px;" width="250" height="54" /></a>
-			
-			<div id="createdBy">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony" style="text-decoration: none;"><b class="secondaryColor">@rexthony</b></a></div>
+<body>
+	<!-- Light mode -->
+	<div class="custom-lm-container">
+		<div class="custom-responsive-container custom-nav-height custom-lm-nav-background-color">
+			<table class="rex-height-100pp rex-width-100pp">
+				<tr>
+					<td class="rex-width-40px">
+						<a href="https://sharetxt.live">
+							<img src="images/icon.png" class="custom-icon-size rex-width-40px rex-height-40px rex-display-table-cell rex-vertical-align rex-mr-16px">
+						</a>
+					</td>
+					<td >
+						<span class="custom-lm-app-name-color rex-weight-bold rex-vertical-align rex-fs-x-large rex-text-overflow-ellipses rex-mr-16px">Share TXT</span>
+						<span class="custom-lm-version-color rex-fs-xx-small rex-nowrap">v 1.4.0</span>
+					</td>
+					<td class="rex-width-0px rex-text-align-right">
+						<div class="rex-display-inline-block rex-nowrap">
+							<label for="customToggleSwitch">
+								<span class="rex-fs-normal custom-lm-mode-color rex-mr-8px rex-vertical-align rex-hover">Light mode</span>
+							</label>
+							<label class="rex-toggle-switch rex-vertical-align">
+								<input id="customToggleLightSwitch" type="checkbox">
+								<span class="rex-toggle-switch-slider rex-toggle-switch-round"></span>
+							</label>
+						</div>
+					</td>
+				</tr>
+			</table>
 		</div>
+		<div class="custom-display-grid rex-display-grid2">
+			<div class="custom-hero-container custom-display-height custom-responsive-container">
+				<p class="custom-hero-text custom-lm-title-color rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp">Visit this website on two devices or browser windows. Enter your text in the input field to share.</p>
+
+				<div class="rex-mt-32px custom-lm-title-color">
+					<span id="numConnections1" class="custom-lm-primary-color">0 clients </span> connected in <span id="roomName1" class="custom-lm-primary-color rex-hover rex-mr-8px custom-path">default</span><img src="images/ic_redirect.png" class="custom-redirect">
+				</div>
+
+				<div class="rex-mt-64px">
+					<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=light" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 200px; height: 43px;" width="200" height="43" /></a>
+				</div>
+
+				<p class="rex-mt-32px custom-lm-version-color rex-fs-small rex-mb-16px rex-lh-xx-small">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony" target="_blank" style="text-decoration: none;" class="custom-lm-version-color rex-weight-bold">Rex Anthony</a></p>
+			</div>
+			<div class="custom-display-height custom-lm-editor-background-color">
+				<div class="custom-editor-input-height">
+					<textarea id="inputFieldLightMode" placeholder="Type or paste text to share" class="rex-fs-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
+				</div>
+				<div id="copyBtn1" class="custom-editor-btn-height custom-lm-editor-btn rex-hover rex-display-flex rex-center-flex-items">
+					<span id="copyBtn1Content" class="rex-color-white rex-fs-large rex-weight-bold">Copy to clipboard</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
-		<script>
-			const ROOM_NAME = "<%= roomName %>";
-			
-			let numConnectionsElm = document.getElementById("numConnections");
-			document.getElementById("roomName").textContent = ROOM_NAME;
-			let inputField = document.getElementById("inputField");
-			let copyBtn = document.getElementById("copyC");
-			
-			function establishSocketConnection(){
-				let socketUrl =  "wss://rexshare.herokuapp.com/"; //"ws://127.0.0.1:3000";
-				let socket = new WebSocket(socketUrl);
-				
-				let isSocketConnected = false;
-				let isLastClientToInputData = false;
-				let encryptedMsg = decryptedMsg = "";
-				
-				socket.onopen = e => {
-					isSocketConnected = true;
-					//console.log("WebSocket connection established");
-					let inputValue = {
-						roomName: ROOM_NAME,
-						type: 'connection'
-					};
-					socket.send(JSON.stringify(inputValue));
-				};
-				
-				socket.onclose = e => {
-					//console.log("Websocket is closed");
-					establishSocketConnection();
-				};
-				
-				socket.onerror = e => {
-					console.log("WebSocket error");
-				};
-				
-				socket.onmessage = e => {
-					let response = JSON.parse(e.data);
-					if(response.type == 'msg'){	
-						isLastClientToInputData = false;
-						//console.log("received encrypted msg : " + response.msg);
-						/*decryptedMsg = CryptoJS.AES.decrypt(response.msg, ROOM_NAME).toString(CryptoJS.enc.Utf8);
-						inputField.value = decryptedMsg;*/
-						inputField.value = response.msg;
-					}else{
-						if(response.numUsers == 1){
-							numConnectionsElm.textContent = "1 client";
-						}else{
-							numConnectionsElm.textContent = response.numUsers + " clients";
-						}
-						
-						if(isLastClientToInputData){
-							shareInput();
-						}
-					}
-				};
-				
-				inputField.oninput = () => {
-					shareInput();
-				};
-				
-				copyBtn.onclick = () => {
-					copyToClipboard(inputField.value);
-					inputField.select();
-					inputField.setSelectionRange(0, this.inputField.value.length)
-				};
-				
-				function shareInput(){
-					if(isSocketConnected){
-						isLastClientToInputData = true;
-						//encryptedMsg = CryptoJS.AES.encrypt(inputField.value, ROOM_NAME).toString();
-						//console.log("sent encrypted msg : " + encryptedMsg);
-						let inputValue = {
-							type: 'message',
-							roomName: ROOM_NAME,
-							//text: encryptedMsg
-							text: inputField.value
-						};
-						socket.send(JSON.stringify(inputValue));
-					}else{
-						console.log("Socket is not yet connected");
-						alert("Socket not connected");
-					}
-				}
-				
-				function copyToClipboard(text){
-					var dummy = document.createElement("textarea");
-					document.body.appendChild(dummy);
-					dummy.value = text;
-					dummy.select();
-					document.execCommand("copy");
-					document.body.removeChild(dummy);
-				}
-			}
-			
-			establishSocketConnection();
-		</script>
-	</body>
+	<!-- Dark mode -->
+	<div class="custom-dm-container">
+		<div class="custom-responsive-container custom-nav-height custom-dm-nav-background-color">
+			<table class="rex-height-100pp rex-width-100pp">
+				<tr>
+					<td class="rex-width-40px">
+						<a href="https://sharetxt.live">
+							<img src="images/icon.png" class="custom-icon-size rex-width-40px rex-height-40px rex-display-table-cell rex-vertical-align rex-mr-16px">
+						</a>
+					</td>
+					<td >
+						<span class="custom-dm-app-name-color rex-weight-bold rex-vertical-align rex-fs-x-large rex-text-overflow-ellipses rex-mr-16px">Share TXT</span>
+						<span class="custom-dm-version-color rex-fs-xx-small rex-nowrap">v 1.4.0</span>
+					</td>
+					<td class="rex-width-0px rex-text-align-right">
+						<div class="rex-display-inline-block rex-nowrap">
+							<label for="customToggleSwitch">
+								<span class="rex-fs-normal custom-dm-mode-color rex-mr-8px rex-vertical-align rex-hover">Dark mode</span>
+							</label>
+							<label class="rex-toggle-switch rex-vertical-align">
+								<input id="customToggleDarkSwitch" type="checkbox" checked>
+								<span class="rex-toggle-switch-slider rex-toggle-switch-round"></span>
+							</label>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="custom-display-grid rex-display-grid2">
+			<div class="custom-hero-container custom-display-height custom-responsive-container">
+				<p class="custom-hero-text custom-dm-title-color rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp">Visit this website on two devices or browser windows. Enter your text in the input field to share.</p>
+
+				<div class="rex-mt-32px custom-dm-title-color">
+					<span id="numConnections2" class="custom-dm-primary-color">0 clients </span> connected in <span id="roomName2" class="custom-dm-primary-color rex-hover rex-mr-8px custom-path">default</span><img src="images/ic_redirect_.png" class="custom-redirect">
+				</div>
+
+				<div class="rex-mt-64px">
+					<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=dark" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 200px; height: 43px;" width="200" height="43" /></a>
+				</div>
+
+				<p class="rex-mt-32px custom-lm-version-color rex-fs-small rex-mb-16px rex-lh-xx-small">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony" target="_blank" style="text-decoration: none;" class="custom-lm-version-color rex-weight-bold">Rex Anthony</a></p>
+			</div>
+			<div class="custom-display-height custom-dm-editor-background-color">
+				<div class="custom-editor-input-height">
+					<textarea id="inputFieldDarkMode" placeholder="Type or paste text to share" class="custom-dm-input-field rex-fs-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
+				</div>
+				<div id="copyBtn2" class="custom-editor-btn-height custom-dm-editor-btn rex-hover rex-display-flex rex-center-flex-items">
+					<span id="copyBtn2Content" class="rex-color-white rex-fs-large rex-weight-bold">Copy to clipboard</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<div class="rex-modal-background custom-modal-background">
+		<div class="custom-modal">
+			<div class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items">
+				Go to
+			</div>
+			<div class="rex-pad16px custom-lm-background-color">
+				<table class="rex-width-100pp rex-mt-32px">
+					<tr>
+						<td class="rex-width-0">
+							<span class="custom-lm-color">https://sharetxt.live/</span>
+						</td>
+						<td>
+							<input type="text" class="rex-width-100pp rex-fs-normal custom-lm-modal-input">
+						</td>
+					</tr>
+				</table>
+				<div class="rex-text-align-right rex-mt-32px">
+					<button class="rex-btn-primary rex-fs-normal rex-nowrap">Go to url</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="custom-modal">
+			<div class="rex-height-40px custom-dm-modal-nav-background-color custom-dm-modal-nav-color rex-display-flex rex-center-flex-items">
+				Go to
+			</div>
+			<div class="rex-pad16px custom-dm-background-color">
+				<table class="rex-width-100pp rex-mt-32px">
+					<tr>
+						<td class="rex-width-0">
+							<span class="custom-dm-color">https://sharetxt.live/</span>
+						</td>
+						<td>
+							<input type="text" class="rex-width-100pp rex-fs-normal custom-dm-modal-input">
+						</td>
+					</tr>
+				</table>
+				<div class="rex-text-align-right rex-mt-32px">
+					<button class="rex-btn-secondary rex-fs-normal rex-nowrap">Go to url</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
 </html>
