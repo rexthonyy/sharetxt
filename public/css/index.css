@@ -76,7 +76,7 @@ textarea{
 /*Light mode*/
 /*Background color of the whole screen*/
 .custom-lm-container{
-	display: none;
+	display: block;
 	background-color: rgb(246, 251, 238);
 }
 
@@ -160,7 +160,7 @@ textarea{
 /*Dark mode*/
 /*Background color of the whole screen*/
 .custom-dm-container{
-	display: block;
+	display: none;
 	background-color: rgb(16, 29, 37);
 }
 

@@ -2,16 +2,25 @@ window.onload = () => {
 
 	let numConnections1 = document.getElementById("numConnections1");
 	let numConnections2 = document.getElementById("numConnections2");
-	document.getElementById("roomName1").textContent = ROOM_NAME;
-	document.getElementById("roomName2").textContent = ROOM_NAME;
+	let roomName1 = document.getElementById("roomName1");
+	let roomName2 = document.getElementById("roomName2");
 	let inputField1 = document.getElementById("inputFieldLightMode");
 	let inputField2 = document.getElementById("inputFieldDarkMode");
 	let copyBtn1 = document.getElementById("copyBtn1");
 	let copyBtn2 = document.getElementById("copyBtn2");
 	let copyBtn1Content = document.getElementById("copyBtn1Content");
 	let copyBtn2Content = document.getElementById("copyBtn2Content");
+	let modalBackground = document.getElementsByClassName("custom-modal-background")[0];
+	let modal = document.getElementsByClassName("custom-modal");
+	let pathUrl1 = document.getElementById("pathUrl1");
+	let pathUrl2 = document.getElementById("pathUrl2");
+	let gotoUrl1 = document.getElementById("gotoUrl1");
+	let gotoUrl2 = document.getElementById("gotoUrl2");
 
 	let text = "";
+
+	roomName1.textContent = ROOM_NAME;
+	roomName2.textContent = ROOM_NAME;
 
 	function establishSocketConnection(){
 		let socketUrl =  "wss://rexshare.herokuapp.com/"; 
@@ -190,6 +199,57 @@ window.onload = () => {
 
 			lightModeContainer.style.display = "none";
 			darkModeContainer.style.display = "block";
+		}
+
+		roomName1.onclick = e => {
+			stopClickPropagation(e);
+			pathUrl1.value = ROOM_NAME;
+			modalBackground.style.display = "flex";
+			modal[0].style.display = "block";
+			window.onclick = () => {
+				modalBackground.style.display = "none";
+				modal[0].style.display = "none";
+			};
+		};
+
+		roomName2.onclick = e => {
+			stopClickPropagation(e);
+			pathUrl2.value = ROOM_NAME;
+			modalBackground.style.display = "flex";
+			modal[1].style.display = "block";
+			window.onclick = () => {
+				modalBackground.style.display = "none";
+				modal[1].style.display = "none";
+			};
+		};
+
+		function stopClickPropagation(e){
+			if(!e) e = window.event;
+			if(e.stopPropagation){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble = true;
+			}
+		}
+
+		gotoUrl1.onclick = () => {
+			if(pathUrl1.value){
+				let path = "http://sharetxt.live/" + pathUrl1.value;
+				window.open(path, "_self");
+			}
+		};
+
+		gotoUrl2.onclick = () => {
+			if(pathUrl2.value){
+				let path = "http://sharetxt.live/" + pathUrl2.value;
+				window.open(path, "_self");
+			}
+		};
+
+		for(let i = 0; i < modal.length; i++){
+			modal[i].onclick = e => {
+				stopClickPropagation(e);
+			}
 		}
 	}
 
