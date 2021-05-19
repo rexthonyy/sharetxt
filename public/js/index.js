@@ -23,8 +23,8 @@ window.onload = () => {
 	roomName2.textContent = ROOM_NAME;
 
 	function establishSocketConnection(){
-		let socketUrl =  "wss://rexshare.herokuapp.com/"; 
-		//let socketUrl = "ws://127.0.0.1:3000";
+		//let socketUrl =  "wss://rexshare.herokuapp.com/"; 
+		let socketUrl = "ws://127.0.0.1:3000";
 		let socket = new WebSocket(socketUrl);
 		
 		let isSocketConnected = false;
