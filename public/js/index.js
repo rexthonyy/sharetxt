@@ -24,7 +24,7 @@ window.onload = () => {
 
 	function establishSocketConnection(){
 		//let socketUrl =  "wss://rexshare.herokuapp.com/"; 
-		let socketUrl = "wss://127.0.0.1:3000";
+		let socketUrl = "wss://sharetext.live";
 		let socket = new WebSocket(socketUrl);
 		
 		let isSocketConnected = false;
