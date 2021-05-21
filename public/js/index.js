@@ -22,10 +22,19 @@ window.onload = () => {
 	roomName1.textContent = ROOM_NAME;
 	roomName2.textContent = ROOM_NAME;
 
+	function getSocketUrl(){
+		let protocol = window.location.protocol;
+		protocol = protocol=="http:"?"ws://":"wss://";
+		let hostname = window.location.hostname;
+		let port = window.location.port;
+		port = port?":"+port:"";
+
+		return protocol + hostname + port;
+	}
+
 	function establishSocketConnection(){
-		//let socketUrl =  "wss://rexshare.herokuapp.com/"; 
-		let socketUrl = "wss://sharetext.live";
-		let socket = new WebSocket(socketUrl);
+		
+		let socket = new WebSocket(getSocketUrl());
 		
 		let isSocketConnected = false;
 		let isLastClientToInputData = false;
