@@ -94,14 +94,14 @@ window.onload = () => {
 			copyToClipboard(inputField1.value);
 			inputField1.select();
 			inputField1.setSelectionRange(0, text.length);
-			showTempText(copyBtn1Content, "Copied!", "Copy to clipboard", 3000);
+			showTempText(copyBtn1Content, "Copied!", "Copy to clipboard", 800);
 		};
 
 		copyBtn2.onclick = () => {
 			copyToClipboard(inputField2.value);
 			inputField2.select();
 			inputField2.setSelectionRange(0, text.length);
-			showTempText(copyBtn2Content, "Copied!", "Copy to clipboard", 3000);
+			showTempText(copyBtn2Content, "Copied!", "Copy to clipboard", 800);
 		};
 		
 		function shareInput(){
