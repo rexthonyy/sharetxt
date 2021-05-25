@@ -14,7 +14,7 @@
 ## NPM
 Clone this repo and run the following command
 ```bash
-$ npm install sharetxt
+$ cd sharetxt && npm install
 ```
 
 ## How it works 
