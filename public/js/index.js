@@ -188,14 +188,14 @@ window.onload = () => {
 		function setupMode(){
 			let mode = getCookie("mode");
 			if(mode == ""){
-				pageinsight("LightMode", () => {});
+				//pageinsight("LightMode", () => {});
 				enableLightMode();
 			}else{
 				if(mode == "light"){
-					pageinsight("LightMode", () => {});
+					//pageinsight("LightMode", () => {});
 					enableLightMode();
 				}else{
-					pageinsight("DarkMode", () => {});
+					//pageinsight("DarkMode", () => {});
 					enableDarkMode();
 				}
 			}
@@ -250,21 +250,26 @@ window.onload = () => {
 
 		gotoUrl1.onclick = () => {
 			if(pathUrl1.value){
-				pageinsight("GotoRoom", status => {
-					if(status == "success"){
-						let path = "http://sharetxt.live/" + pathUrl1.value;
-						window.open(path, "_self");
-					}
-				});
+				let path = "http://sharetxt.live/" + pathUrl1.value;
+				window.open(path, "_self");
+					
+				// pageinsight("GotoRoom", status => {
+				// 	if(status == "success"){
+				// 		let path = "http://sharetxt.live/" + pathUrl1.value;
+				// 		window.open(path, "_self");
+				// 	}
+				// });
 			}
 		};
 
 		gotoUrl2.onclick = () => {
 			if(pathUrl2.value){
-				pageinsight("GotoRoom", status => {
-					let path = "http://sharetxt.live/" + pathUrl2.value;
-					window.open(path, "_self");
-				});
+				let path = "http://sharetxt.live/" + pathUrl2.value;
+				window.open(path, "_self");
+				// pageinsight("GotoRoom", status => {
+				// 	let path = "http://sharetxt.live/" + pathUrl2.value;
+				// 	window.open(path, "_self");
+				// });
 			}
 		};
 

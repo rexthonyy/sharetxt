@@ -32,7 +32,8 @@ $ cd sharetxt && npm install
   12.   When a user closes the web page, the web socket connection is terminated and all connected clients to that route are notified.
   
 ## Change log
-* **2.0.0** (2021-5-20): Added SSL certificate
+* **1.4.2** (2021-5-26): Changed the responsiveness of the copy to clipboard button
+* **2.0.0** (2021-5-20): Added SSL certificate for sharetext.live
 * **1.4.1** (2021-4-24): Redirect to a different room from within the application
 * **1.4.0** (2021-4-23): New UI, Night mode, replaced text input with textarea
 * **1.3.0** (2021-2-14): Added encryption to messages sent through to the websocket
