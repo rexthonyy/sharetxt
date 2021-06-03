@@ -251,10 +251,8 @@ window.onload = () => {
 		gotoUrl1.onclick = () => {
 			if(pathUrl1.value){
 				pageinsight("GotoRoom", status => {
-					if(status == "success"){
-						let path = "http://sharetxt.live/" + pathUrl1.value;
-						window.open(path, "_self");
-					}
+					let path = "http://sharetxt.live/" + pathUrl1.value;
+					window.open(path, "_self");
 				});
 			}
 		};
