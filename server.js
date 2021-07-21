@@ -13,7 +13,7 @@ const LOCAL_PORT = 3000;
 const PORT = process.env.PORT || LOCAL_PORT;
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ server: server });
 
 app.get('/', (req, res) => {
 	res.redirect('/default');
