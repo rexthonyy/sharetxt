@@ -31,7 +31,7 @@ wss.on('connection', (ws) => {
 	
 	ws.on('message', (msg) => {
 		msg = JSON.parse(msg);
-		console.log(msg);
+		
 		switch(msg.type){
 			case 'connection':
 				if(rooms[msg.roomName]){
