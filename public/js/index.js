@@ -46,7 +46,9 @@ window.onload = () => {
 		
 		socket.onclose = e => {
 			// console.log("Websocket is closed");
-			establishSocketConnection();
+			setTimeout(() => {
+				establishSocketConnection();
+			}, 2000);
 		};
 		
 		socket.onerror = e => {
