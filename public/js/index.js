@@ -36,7 +36,7 @@ window.onload = () => {
 		
 		socket.onopen = e => {
 			isSocketConnected = true;
-			// console.log("WebSocket connection established");
+			console.log("WebSocket connection established");
 			let inputValue = {
 				roomName: ROOM_NAME,
 				type: 'connection'
@@ -45,14 +45,15 @@ window.onload = () => {
 		};
 		
 		socket.onclose = e => {
-			// console.log("Websocket is closed");
+			console.log("Websocket is closed");
 			setTimeout(() => {
 				establishSocketConnection();
 			}, 2000);
 		};
 		
 		socket.onerror = e => {
-			// console.log("WebSocket error");
+			console.log("WebSocket error : " + e);
+			console.log(e.data);
 		};
 		
 		socket.onmessage = e => {
