@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 app.get('/:room', (req, res) => {
 	let roomName = req.params.room;
-	console.log("route is " + roomName);
+	//console.log("route is " + roomName);
 	res.render('index', { roomName: roomName });
 });
 
@@ -44,12 +44,12 @@ wss.on('connection', (ws) => {
 
 					if(!isClientInRoom){
 						rooms[msg.roomName].push(ws);
-						console.log("client joined a room");
+						//console.log("client joined a room");
 					}
 				}else{
 					rooms[msg.roomName] = [];
 					rooms[msg.roomName].push(ws);
-					console.log("client added to empty room");
+					//console.log("client added to empty room");
 				}	
 
 				let con_response = {
@@ -63,7 +63,7 @@ wss.on('connection', (ws) => {
 					}
 				});
 				
-				showStat();
+				//showStat();
 			break;
 			
 			case 'message':
@@ -88,10 +88,10 @@ wss.on('connection', (ws) => {
 			const index = clientList.findIndex(client => ws == client);
 			if(index !== -1){
 				clientList.splice(index, 1);
-				console.log("Removed client from " + roomName);
+				//console.log("Removed client from " + roomName);
 				if(clientList.length == 0){
 					delete rooms.roomName;
-					console.log(roomName + " deleted");
+					//console.log(roomName + " deleted");
 				}else{
 					let con_response = {
 						type: 'userConnected',
@@ -107,7 +107,7 @@ wss.on('connection', (ws) => {
 			}
 		}
 		
-		showStat();
+		//showStat();
 	});
 });
 
