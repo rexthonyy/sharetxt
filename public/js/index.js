@@ -23,13 +23,7 @@ window.onload = () => {
 	roomName2.textContent = ROOM_NAME;
 
 	function getSocketUrl(){
-		let protocol = window.location.protocol;
-		protocol = protocol=="http:"?"ws://":"wss://";
-		let hostname = window.location.hostname;
-		let port = window.location.port;
-		port = port?":"+port:"";
-
-		return protocol + hostname + port;
+		return location.origin.replace(/^http/, 'ws');
 	}
 
 	function establishSocketConnection(){

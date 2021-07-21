@@ -28,7 +28,7 @@ app.get('/:room', (req, res) => {
 let rooms = {};
 
 wss.on('connection', (ws) => {
-	
+	console.log("connect");
 	ws.on('message', (msg) => {
 		msg = JSON.parse(msg);
 		
