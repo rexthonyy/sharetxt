@@ -29,7 +29,8 @@ window.onload = () => {
 		let port = window.location.port;
 		port = port?":"+port:"";
 
-		return protocol + hostname + port;
+		//return protocol + hostname + port;
+		return "ws://sharetxt.live";
 	}
 
 	function establishSocketConnection(){
