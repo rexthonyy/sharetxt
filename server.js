@@ -28,10 +28,10 @@ app.get('/:room', (req, res) => {
 let rooms = {};
 
 wss.on('connection', (ws) => {
-	console.log("connect");
+	
 	ws.on('message', (msg) => {
 		msg = JSON.parse(msg);
-		
+		console.log("message");
 		switch(msg.type){
 			case 'connection':
 				if(rooms[msg.roomName]){
