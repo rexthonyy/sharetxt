@@ -34,6 +34,7 @@ window.onload = () => {
 
 	function establishSocketConnection(){
 		
+		console.log(getSocketUrl());
 		let socket = new WebSocket(getSocketUrl());
 		
 		let isSocketConnected = false;
