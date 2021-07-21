@@ -48,11 +48,11 @@ window.onload = () => {
 			console.log("Websocket is closed");
 			setTimeout(() => {
 				establishSocketConnection();
-			}, 2000);
+			}, 1000);
 		};
 		
 		socket.onerror = e => {
-			console.log(e);
+			console.log("WebSocket error");
 		};
 		
 		socket.onmessage = e => {
