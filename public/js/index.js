@@ -52,8 +52,7 @@ window.onload = () => {
 		};
 		
 		socket.onerror = e => {
-			console.log("WebSocket error : " + e);
-			console.log(e.data);
+			console.log(e);
 		};
 		
 		socket.onmessage = e => {
