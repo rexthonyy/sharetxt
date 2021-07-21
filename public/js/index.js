@@ -24,7 +24,7 @@ window.onload = () => {
 
 	function getSocketUrl(){
 		let protocol = window.location.protocol;
-		protocol = protocol=="http:"?"wss://":"wss://";
+		protocol = protocol=="http:"?"ws://":"wss://";
 		let hostname = window.location.hostname;
 		let port = window.location.port;
 		port = port?":"+port:"";
