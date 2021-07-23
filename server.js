@@ -30,7 +30,6 @@ app.get('/:room', (req, res) => {
 });
 
 function getLanguageFromCountryCode(countryCode){
-	console.log("countryCode ==============================================> " + countryCode);
 	switch(countryCode){
 		case "TW":
 		case "CN":
