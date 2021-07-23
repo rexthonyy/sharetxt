@@ -7,7 +7,6 @@ function getIpAddress(req) {
 			ipAddress = ipAddress.substr(7);
 			console.log("----------------------------------->(real)ip address : " + ipAddress);
 		}else{
-			ipAddress = "162.243.3.149";
 			console.log("----------------------------------->(really fake)ip address : " + ipAddress);
 		}
 	}else{
