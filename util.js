@@ -5,14 +5,14 @@ function getIpAddress(req) {
 	if(ipAddress){
 		if (ipAddress.substr(0, 7) == "::ffff:") {
 			ipAddress = ipAddress.substr(7);
-			console.log("(real)ip address : " + ipAddress);
+			console.log("----------------------------------->(real)ip address : " + ipAddress);
 		}else{
 			ipAddress = "162.243.3.149";
-			console.log("(really fake)ip address : " + ipAddress);
+			console.log("----------------------------------->(really fake)ip address : " + ipAddress);
 		}
 	}else{
 		ipAddress = "162.243.3.149";
-		console.log("(fake)ip address : " + ipAddress);
+		console.log("----------------------------------->(fake)ip address : " + ipAddress);
 	}
 	//console.log("Device ip is " + ipAddress);
 	return ipAddress;
