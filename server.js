@@ -1,13 +1,15 @@
 const express = require('express');
-// const path = require('path');
 const http = require('http');
 const WebSocket = require('ws');
+const util = require('./util');
 
 const app = express();
 const server = http.Server(app);
 
 app.set('view engine', 'ejs');
+
 app.use(express.static('public'));
+app.use(express.json());
 
 const LOCAL_PORT = 3000;
 const PORT = process.env.PORT || LOCAL_PORT;
@@ -21,9 +23,62 @@ app.get('/', (req, res) => {
 
 app.get('/:room', (req, res) => {
 	let roomName = req.params.room;
-	//console.log("route is " + roomName);
-	res.render('index', { roomName: roomName });
+	getCountryCode(util.getIpAddress(req), response => {
+		let lang = response.status == "success" ? getLanguageFromCountryCode(response.countryCode) : "EN";
+		res.render('index', { roomName: roomName, lang: lang });
+	});
 });
+
+function getLanguageFromCountryCode(countryCode){
+	switch(countryCode){
+		case "TW":
+		case "CN":
+			return "TW";
+
+		case "IN":
+			return "HI";
+
+		case "ES":
+		case "AR":
+			return "ES";
+
+		case "DE":
+			return "DE";
+
+		case "MY":
+			return "MY";
+
+		default:
+			return "EN";
+
+	}
+}
+
+let ipAddressCache = {};
+function getCountryCode(ipAddress, callback) {
+	if (ipAddressCache[ipAddress]) {
+		callback(ipAddressCache[ipAddress]);
+	} else {
+		let lookupAgent = `http://ip-api.com/json/${ipAddress}?fields=status,message,countryCode`;
+		util.sendGetRequest(lookupAgent)
+			.then(json => {
+				if (json.status == "success") {
+					let response = { status: "success", countryCode: json.countryCode };
+					if(Object.keys(ipAddressCache).length > 100){
+						ipAddressCache = {};
+					}
+					ipAddressCache[ipAddress] = response;
+					callback(response);
+				} else {
+					console.error("ip resolution error : " + json.message);
+					callback({ status: 'failed' });
+				}
+			}).catch(err => {
+				console.error(err);
+				callback({ status: 'failed' });
+			});
+	}
+}
 
 let rooms = {};
 
@@ -44,12 +99,10 @@ wss.on('connection', (ws) => {
 
 					if(!isClientInRoom){
 						rooms[msg.roomName].push(ws);
-						//console.log("client joined a room");
 					}
 				}else{
 					rooms[msg.roomName] = [];
 					rooms[msg.roomName].push(ws);
-					//console.log("client added to empty room");
 				}	
 
 				let con_response = {
@@ -62,8 +115,6 @@ wss.on('connection', (ws) => {
 						client.send(JSON.stringify(con_response));
 					}
 				});
-				
-				//showStat();
 			break;
 			
 			case 'message':
@@ -88,10 +139,8 @@ wss.on('connection', (ws) => {
 			const index = clientList.findIndex(client => ws == client);
 			if(index !== -1){
 				clientList.splice(index, 1);
-				//console.log("Removed client from " + roomName);
 				if(clientList.length == 0){
 					delete rooms.roomName;
-					//console.log(roomName + " deleted");
 				}else{
 					let con_response = {
 						type: 'userConnected',
@@ -106,8 +155,6 @@ wss.on('connection', (ws) => {
 				}
 			}
 		}
-		
-		//showStat();
 	});
 });
 
