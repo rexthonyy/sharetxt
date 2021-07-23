@@ -10,6 +10,7 @@
 @import 'rex-alignment.css';
 @import 'rex-dom.css';
 @import 'rex-toggle-switch.css';
+@import 'rex-clickable-dropdown.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
@@ -57,7 +58,7 @@ textarea{
 
 .custom-modal-background{
 	display: none;
-	/*display: flex;*/
+	/* display: flex; */
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -65,180 +66,292 @@ textarea{
 
 .custom-modal{
 	display: none;
-	width: 50%;
+	width: 400px;
 }
 
-/*.custom-modal:nth-child(2){
-	display: none;
-}*/
-
-
-/*Light mode*/
-/*Background color of the whole screen*/
-.custom-lm-container{
+/* .custom-modal:first-child{
 	display: block;
-	background-color: rgb(246, 251, 238);
-}
+} */
 
-.custom-lm-background-color{
-	background-color: rgb(246, 251, 238);
-}
-
-.custom-lm-color{
+.custom-color{
 	color: rgb(71, 190, 185);
 }
 
-/*Background color of the navigation menu*/
-.custom-lm-nav-background-color{
-	background-color: transparent;
-}
-
-/*Color of the app name*/
-.custom-lm-app-name-color{
-	color: rgb(22, 6, 71);
-}
-
-/*Color of the light mode text*/
-.custom-lm-mode-color{
-	color: rgb(22, 6, 71);
-}
-
-/*Color of the hero text color*/
-.custom-lm-title-color{
-	color: rgb(22, 6, 71);
-}
-
-/*Color of the connected clients*/
-.custom-lm-primary-color{
-	color: rgb(22, 6, 71);
-	font-weight: bold;
-}
-
-/*Background color of the editor input field*/
-.custom-lm-editor-background-color{
-	background-color: rgb(228, 248, 243);
-}
-
-/*Version color*/
-.custom-lm-version-color{
-	color: rgb(141, 216, 205);
-}
-
 /*The copy button*/
-.custom-lm-editor-btn{
+.custom-editor-btn{
 	background-color: rgb(71, 190, 185);
 }
 
-.custom-lm-editor-btn:hover{
+.custom-editor-btn:hover{
 	background-color: rgb(89, 234, 227);
 }
 
-/*The background color of the modal nav*/
-.custom-lm-modal-nav-background-color{
-	background-color: rgb(71, 190, 185);
+.custom-border-left{
+	border-left: 1px solid rgb(80, 80, 80);
 }
 
-/*The color of the text in the modal nav*/
-.custom-lm-modal-nav-color{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Light mode : Background color of the whole screen*/
+.custom-lm-container div#mainBg{
+	background-color: rgb(246, 251, 238);
+}
+
+/* Light mode : app name */
+.custom-lm-container div#mainBg div table tr td #appName{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode: app version */
+.custom-lm-container div#mainBg div table tr td #appVersion{
+	color: rgb(141, 216, 205);
+}
+
+/* Light mode : theme label color */
+.custom-lm-container div#mainBg div table tr td div label #colorTheme{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : selected language color */
+.custom-lm-container div#mainBg div table tr td div span div span span#selectedLang{
+	color: rgb(22, 6, 71);
+	padding-bottom: 4px;
+	border-bottom: 1px dashed rgb(22, 6, 71);
+}
+
+/* Light mode : selected language dropdown background color */
+.custom-lm-container div#mainBg div table tr td div span div div#languageToggleDropdown{
+	background-color: white;
+}
+
+/* Light mode : selected language dropdown content color */
+.custom-lm-container div#mainBg div table tr td div span div div#languageToggleDropdown span{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : headline color */
+.custom-lm-container div#mainBg div div p#headline{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : producthunt badge */
+.custom-lm-container div#mainBg div div div#producthuntLight{
+	display: block;
+}
+
+/* Light mode : producthunt badge dark */
+.custom-lm-container div#mainBg div div div#producthuntDark{
+	display: none;
+}
+
+/* Dark mode : number of connections container */
+.custom-lm-container div#mainBg div div div#clientsLabel{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : number of connections label */
+.custom-lm-container div#mainBg div div div span#numConnections{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : rooms name label */
+.custom-lm-container div#mainBg div div div span#roomName{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : created by */
+.custom-lm-container div#mainBg div div p#createdBy{
+	color: rgb(141, 216, 205);
+}
+
+/* Light mode : textarea background*/
+.custom-lm-container div#mainBg div div#editorBg{
+	background-color: rgb(228, 248, 243);
+}
+
+/* Light mode : gotomodal header*/
+.custom-lm-container div div div#gotoHeader{
+	background-color: rgb(71, 190, 185);
 	color: white;
 }
 
-/*The modal input*/
-.custom-lm-modal-input{
+/* Light mode : gotoBodyBg header*/
+.custom-lm-container div div div#gotoBodyBg{
+	background-color: rgb(246, 251, 238);
+}
+
+/* Light mode : goto path url*/
+.custom-lm-container div div div#gotoBodyBg table tr td input#pathUrl{
 	background-color: transparent;
 	border: 0;
 	border-bottom: 1px solid rgb(80, 80, 80);
 }
 
-.custom-lm-modal-input:focus{
-	border-bottom: 1px solid rgb(71, 190, 185);
+/* Light mode : goto button*/
+.custom-lm-container div div div#gotoBodyBg div button#gotoUrl{
+	padding: 8px 16px;
+	background-color: transparent;
+	border: 0;
+	letter-spacing: 2px;
+	color: rgb(71, 190, 185);
+}
+
+/* Light mode : goto button hover */
+.custom-lm-container div div div#gotoBodyBg div button#gotoUrl:hover{
+	cursor: pointer;
+	background-color: rgb(240, 240, 240);
 }
 
 
 
 
-/*Dark mode*/
-/*Background color of the whole screen*/
-.custom-dm-container{
-	display: none;
+
+
+
+
+
+
+/* Dark mode background */
+.custom-dm-container div#mainBg{
 	background-color: rgb(16, 29, 37);
 }
 
-/*Background color of the navigation menu*/
-.custom-dm-nav-background-color{
-	background-color: transparent;
-}
-
-/*Color of the app name*/
-.custom-dm-app-name-color{
+/* Dark mode : app name */
+.custom-dm-container div#mainBg div table tr td #appName{
 	color: rgb(241, 241, 241);
 }
 
-/*Color of the night mode text*/
-.custom-dm-mode-color{
-	color: rgb(211, 215, 218);
-}
-
-/*Color of the hero text color*/
-.custom-dm-title-color{
-	color: rgb(211, 215, 218);
-}
-
-/*Color of the connected clients*/
-.custom-dm-primary-color{
-	color: rgb(71, 190, 185);
-}
-
-/*Background color of the editor input field*/
-.custom-dm-editor-background-color{
-	background-color: rgb(35, 45, 54);
-}
-
-/*Version color*/
-.custom-dm-version-color{
+/* Dark mode: app version */
+.custom-dm-container div#mainBg div table tr td #appVersion{
 	color: rgb(125, 204, 220);
 }
 
-/*Editor input*/
-.custom-dm-input-field{
+/* Dark mode : theme label color */
+.custom-dm-container div#mainBg div table tr td div label #colorTheme{
 	color: rgb(211, 215, 218);
 }
 
-/*The copy button*/
-.custom-dm-editor-btn{
-	background-color: rgb(0, 176, 156);
+/* Dark mode : selected language color */
+.custom-dm-container div#mainBg div table tr td div span div span span#selectedLang{
+	color: rgb(211, 215, 218);
+	padding-bottom: 4px;
+	border-bottom: 1px dashed rgb(211, 215, 218);
 }
 
-.custom-dm-editor-btn:hover{
-	background-color: rgb(0, 224, 198);
+/* Dark mode : selected language dropdown background color */
+.custom-dm-container div#mainBg div table tr td div span div div#languageToggleDropdown{
+	background-color: rgb(68, 73, 78);
 }
 
-.custom-dm-modal-nav-background-color{
-	background-color: rgb(0, 176, 156);
+/* Dark mode : selected language dropdown content color */
+.custom-dm-container div#mainBg div table tr td div span div div#languageToggleDropdown span{
+	color: rgb(211, 215, 218);
 }
 
-.custom-dm-modal-nav-color{
-	color: white;
+/* Dark mode : headline color */
+.custom-dm-container div#mainBg div div p#headline{
+	color: rgb(211, 215, 218);
 }
 
-.custom-dm-background-color{
-	background-color: rgb(35, 45, 54);
+/* Dark mode : producthunt badge  light*/
+.custom-dm-container div#mainBg div div div#producthuntLight{
+	display: none;
 }
 
-.custom-dm-color{
+/* Dark mode : producthunt badge dark*/
+.custom-dm-container div#mainBg div div div#producthuntDark{
+	display: block;
+}
+
+/* Dark mode : number of connections label */
+.custom-dm-container div#mainBg div div div span#numConnections{
 	color: rgb(71, 190, 185);
 }
 
-.custom-dm-modal-input{
+/* Dark mode : number of connections container */
+.custom-dm-container div#mainBg div div div#clientsLabel{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : number of connections label */
+.custom-dm-container div#mainBg div div div span#numConnections{
+	color: rgb(71, 190, 185);
+}
+
+/* Dark mode : rooms name label */
+.custom-dm-container div#mainBg div div div span#roomName{
+	color: rgb(71, 190, 185);
+}
+
+/* Dark mode : created by */
+.custom-dm-container div#mainBg div div p#createdBy{
+	color: rgb(141, 216, 205);
+}
+
+/* Dark mode : textarea background*/
+.custom-dm-container div#mainBg div div#editorBg{
+	background-color: rgb(35, 45, 54);
+}
+
+/* Dark mode : textarea input field*/
+.custom-dm-container div#mainBg div div div textarea#inputField{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : gotomodal header*/
+.custom-dm-container div div div#gotoHeader{
+	background-color: rgb(0, 176, 156);
+	color: white;
+}
+
+/* Dark mode : gotoBodyBg header*/
+.custom-dm-container div div div#gotoBodyBg{
+	background-color: rgb(35, 45, 54);
+}
+
+/* Dark mode : goto path color*/
+.custom-dm-container div div div#gotoBodyBg table tr td input#pathUrl{
 	background-color: transparent;
 	border: 0;
 	border-bottom: 1px solid rgb(80, 80, 80);
 	color: white;
 }
 
-.custom-dm-modal-input:focus{
-	border-bottom: 1px solid rgb(71, 190, 185);
+/* Dark mode : goto button*/
+.custom-dm-container div div div#gotoBodyBg div button#gotoUrl{
+	padding: 8px 16px;
+	background-color: transparent;
+	border: 0;
+	letter-spacing: 2px;
+	color: rgb(71, 190, 185);
 }
+/* Dark mode : goto button hover*/
+.custom-dm-container div div div#gotoBodyBg div button#gotoUrl:hover{
+	cursor: pointer;
+	background-color: rgba(80, 80, 80, 0.4);
+}
+
+
+
+
+
+
+
+
 
 @media (max-width: 700px) {
 	.custom-responsive-container{
@@ -259,7 +372,7 @@ textarea{
 		line-height: 32px;
 	}
 	.custom-modal{
-		width: 80%;
+		width: 300px;
 	}
 }
 

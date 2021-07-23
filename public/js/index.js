@@ -1,34 +1,58 @@
 window.onload = () => {
-
-	let numConnections1 = document.getElementById("numConnections1");
-	let numConnections2 = document.getElementById("numConnections2");
-	let roomName1 = document.getElementById("roomName1");
-	let roomName2 = document.getElementById("roomName2");
-	let inputField1 = document.getElementById("inputFieldLightMode");
-	let inputField2 = document.getElementById("inputFieldDarkMode");
-	let copyBtn1 = document.getElementById("copyBtn1");
-	let copyBtn2 = document.getElementById("copyBtn2");
-	let copyBtn1Content = document.getElementById("copyBtn1Content");
-	let copyBtn2Content = document.getElementById("copyBtn2Content");
-	let modalBackground = document.getElementsByClassName("custom-modal-background")[0];
+	let container = document.getElementById("container");
+	let colorTheme = document.getElementById("colorTheme");
+	let customToggleLightSwitch = document.getElementById("customToggleLightSwitch");
+	let languageToggle = document.getElementById("languageToggle");
+	let selectedLang = document.getElementById("selectedLang");
+	let languageToggleDropdown = document.getElementById("languageToggleDropdown");
+	let numConnections = document.getElementById("numConnections");
+	let roomName = document.getElementById("roomName");
+	let redirectIcon = document.getElementById("redirectIcon");
+	let inputField = document.getElementById("inputField");
+	let copyBtn = document.getElementById("copyBtn");
+	let copyBtnContent = document.getElementById("copyBtnContent");
+	let modalBackground = document.getElementById("modalBackground");
 	let modal = document.getElementsByClassName("custom-modal");
-	let pathUrl1 = document.getElementById("pathUrl1");
-	let pathUrl2 = document.getElementById("pathUrl2");
-	let gotoUrl1 = document.getElementById("gotoUrl1");
-	let gotoUrl2 = document.getElementById("gotoUrl2");
+	let pathUrl = document.getElementById("pathUrl");
+	let gotoUrl = document.getElementById("gotoUrl");
+
+	let translateSelector = new TranslateSelector({
+		dropdownLabelElm: selectedLang,
+		dropdownContentElm: languageToggleDropdown,
+		stringAttribute: "translate",
+		chosenLang: "EN",
+		dictionary: getDictionary(),
+		resolver: new ContentResolver()
+	});
+
+	let placeholderResolver = new PlaceholderResolver;
+
+	translateSelector.onchange = lang => {
+		placeholderResolver.resolve(
+			lang,
+			inputField,
+			getDictionary()
+		);
+	};
 
 	let text = "";
 
-	roomName1.textContent = ROOM_NAME;
-	roomName2.textContent = ROOM_NAME;
+	roomName.textContent = ROOM_NAME;
 
 	function getSocketUrl(){
 		return location.origin.replace(/^http/, 'ws');
 	}
 
+	function translate(text){
+		return getTranslation(
+			translateSelector.lang.chosenLang,
+			text,
+			getDictionary()
+		)
+	}
+
 	function establishSocketConnection(){
 		
-		console.log(getSocketUrl());
 		let socket = new WebSocket(getSocketUrl());
 		
 		let isSocketConnected = false;
@@ -36,7 +60,7 @@ window.onload = () => {
 		
 		socket.onopen = e => {
 			isSocketConnected = true;
-			console.log("WebSocket connection established");
+			//console.log("WebSocket connection established");
 			let inputValue = {
 				roomName: ROOM_NAME,
 				type: 'connection'
@@ -45,30 +69,27 @@ window.onload = () => {
 		};
 		
 		socket.onclose = e => {
-			console.log("Websocket is closed");
+			//console.log("Websocket is closed");
 			setTimeout(() => {
 				establishSocketConnection();
 			}, 1000);
 		};
 		
 		socket.onerror = e => {
-			console.log("WebSocket error");
+			//console.log("WebSocket error");
 		};
 		
 		socket.onmessage = e => {
 			let response = JSON.parse(e.data);
 			if(response.type == 'msg'){	
 				isLastClientToInputData = false;
-				inputField1.value = response.msg;
-				inputField2.value = response.msg;
+				inputField.value = response.msg;
 				text = response.msg;
 			}else{
 				if(response.numUsers == 1){
-					numConnections1.textContent = "1 client";
-					numConnections2.textContent = "1 client";
+					numConnections.textContent = "1 " + translate("client");
 				}else{
-					numConnections1.textContent = response.numUsers + " clients";
-					numConnections2.textContent = response.numUsers + " clients";
+					numConnections.textContent = response.numUsers + " " + translate("clients");
 				}
 				
 				if(isLastClientToInputData){
@@ -77,28 +98,16 @@ window.onload = () => {
 			}
 		};
 		
-		inputField1.oninput = () => {
-			text = inputField1.value;
+		inputField.oninput = () => {
+			text = inputField.value;
 			shareInput();
 		};
 
-		inputField2.oninput = () => {
-			text = inputField2.value;
-			shareInput();
-		};
-
-		copyBtn1.onclick = () => {
-			copyToClipboard(inputField1.value);
-			inputField1.select();
-			inputField1.setSelectionRange(0, text.length);
-			showTempText(copyBtn1Content, "Copied!", "Copy to clipboard", 800);
-		};
-
-		copyBtn2.onclick = () => {
-			copyToClipboard(inputField2.value);
-			inputField2.select();
-			inputField2.setSelectionRange(0, text.length);
-			showTempText(copyBtn2Content, "Copied!", "Copy to clipboard", 800);
+		copyBtn.onclick = () => {
+			copyToClipboard(inputField.value);
+			inputField.select();
+			inputField.setSelectionRange(0, text.length);
+			showTempText(copyBtnContent, translate("Copied!"), translate("Copy to clipboard"), 600);
 		};
 		
 		function shareInput(){
@@ -112,7 +121,7 @@ window.onload = () => {
 				socket.send(JSON.stringify(inputValue));
 			}else{
 				console.log("Socket is not yet connected");
-				alert("Socket not connected");
+				alert(translate("Socket not connected"));
 			}
 		}
 		
@@ -132,47 +141,51 @@ window.onload = () => {
 			}, duration);
 		}
 
+		window.onclick = function(event) {
+			handleDialog(event);
+			handleMinDropdown(event);
+		};
+
 		setSwitchListener();
+		setupLanguageToggle();
 		setEditorTabPressListener();
 		setupMode();
+		setupLanguage();
 
 		function setSwitchListener(){
-			let customToggleLightSwitch = document.getElementById("customToggleLightSwitch");
-			customToggleLightSwitch.onclick = () => {
+			customToggleLightSwitch.addEventListener("change", () => {
 				if(customToggleLightSwitch.checked){
-					customToggleLightSwitch.checked = false;
 					//save setting as a cookie
 					setCookie("mode", "dark", 7);
 					enableDarkMode();
-					inputField2.value = text;
-				}
-			};
-
-			let customToggleDarkSwitch = document.getElementById("customToggleDarkSwitch");
-			customToggleDarkSwitch.onclick = () => {
-				if(!customToggleDarkSwitch.checked){
-					customToggleDarkSwitch.checked = true;
-					//save setting as a cookie
+				}else{
 					setCookie("mode", "light", 7);
 					enableLightMode();
-					inputField1.value = text;
 				}
+			});
+		}
+
+		function setupLanguageToggle(){
+			languageToggle.onclick = (e) => {
+				stopClickPropagation(e);
+				languageToggleDropdown.classList.toggle("rex-cd-show");
 			};
 		}
 
-		function setEditorTabPressListener(){
-			let inputFieldLightMode = document.getElementById("inputFieldLightMode");
-			inputFieldLightMode.onkeydown = function(e){
-				if(e.keycode == 9 || e.which == 9){
-					e.preventDefault();
-					let s = this.selectionStart;
-					this.value = this.value.substring(0, this.selectionStart) + "\t" + this.value.substring(this.selectionEnd);
-					this.selectionEnd = s + 1;
+		function handleMinDropdown(event) {
+			if (!event.target.matches('.rex-cd-dropbtn')) {
+				let dropdowns = document.getElementsByClassName("rex-cd-dropdown-content-min");
+				for (let i = 0; i < dropdowns.length; i++) {
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('rex-cd-show')) {
+						openDropdown.classList.remove('rex-cd-show');
+					}
 				}
-			};
+			}
+		}
 
-			let inputFieldDarkMode = document.getElementById("inputFieldDarkMode");
-			inputFieldDarkMode.onkeydown = function(e){
+		function setEditorTabPressListener(){
+			inputField.onkeydown = function(e){
 				if(e.keycode == 9 || e.which == 9){
 					e.preventDefault();
 					let s = this.selectionStart;
@@ -184,86 +197,76 @@ window.onload = () => {
 
 		function setupMode(){
 			let mode = getCookie("mode");
-			if(mode == ""){
-				//pageinsight("LightMode", () => {});
+			if(!mode){
 				enableLightMode();
+				customToggleLightSwitch.checked = false;
 			}else{
 				if(mode == "light"){
-					//pageinsight("LightMode", () => {});
 					enableLightMode();
+					customToggleLightSwitch.checked = false;
 				}else{
-					//pageinsight("DarkMode", () => {});
 					enableDarkMode();
+					customToggleLightSwitch.checked = true;
 				}
 			}
 		}
 
-		function enableLightMode(){
-			let lightModeContainer = document.getElementsByClassName("custom-lm-container")[0];
-			let darkModeContainer = document.getElementsByClassName("custom-dm-container")[0];
+		function setupLanguage(){
+			let language = getCookie("lang");
+			if(!language){
+				//use language from server
+				translateSelector.selectLanguage("EN");
+			}else{
+				translateSelector.selectLanguage(language);
+			}
+			placeholderResolver.resolve(
+				language,
+				inputField,
+				getDictionary()
+			);
+		}
 
-			lightModeContainer.style.display = "block";
-			darkModeContainer.style.display = "none";
+		function enableLightMode(){
+			container.className = "custom-lm-container";
+			colorTheme.textContent = translate("Light mode");
+			redirectIcon.src="/images/ic_redirect.png";
 		}
 
 		function enableDarkMode(){
-			let lightModeContainer = document.getElementsByClassName("custom-lm-container")[0];
-			let darkModeContainer = document.getElementsByClassName("custom-dm-container")[0];
-
-			lightModeContainer.style.display = "none";
-			darkModeContainer.style.display = "block";
+			container.className = "custom-dm-container";
+			colorTheme.textContent = translate("Dark mode");
+			redirectIcon.src="/images/ic_redirect_.png";
 		}
 
-		roomName1.onclick = e => {
+		roomName.onclick = e => {
 			stopClickPropagation(e);
-			pathUrl1.value = ROOM_NAME;
+			pathUrl.value = ROOM_NAME;
 			modalBackground.style.display = "flex";
 			modal[0].style.display = "block";
-			window.onclick = () => {
-				modalBackground.style.display = "none";
-				modal[0].style.display = "none";
-			};
+			pathUrl.focus();
+			let val = pathUrl.value;
+			pathUrl.value = "";
+			pathUrl.value = val;
+			handleMinDropdown(e);// close the language dropdown if it is open
 		};
-
-		roomName2.onclick = e => {
-			stopClickPropagation(e);
-			pathUrl2.value = ROOM_NAME;
-			modalBackground.style.display = "flex";
-			modal[1].style.display = "block";
-			window.onclick = () => {
-				modalBackground.style.display = "none";
-				modal[1].style.display = "none";
-			};
-		};
-
-		function stopClickPropagation(e){
-			if(!e) e = window.event;
-			if(e.stopPropagation){
-				e.stopPropagation();
-			}else{
-				e.cancelBubble = true;
-			}
+		
+		function handleDialog(e){
+			modalBackground.style.display = "none";
+			modal[0].style.display = "none";
 		}
 
-		gotoUrl1.onclick = () => {
-			if(pathUrl1.value){
-				let path = "http://sharetxt.live/" + pathUrl1.value;
-				window.open(path, "_self");
-				// pageinsight("GotoRoom", status => {
-				// 	let path = "http://sharetxt.live/" + pathUrl1.value;
-				// 	window.open(path, "_self");
-				// });
+		pathUrl.addEventListener("keyup", e => {
+			if(e.keyCode === 13){
+				e.preventDefault();
+				gotoUrl.click();
 			}
-		};
+		});
 
-		gotoUrl2.onclick = () => {
-			if(pathUrl2.value){
-				let path = "http://sharetxt.live/" + pathUrl2.value;
+		
+		gotoUrl.onclick = () => {
+			if(pathUrl.value){
+				let path = "http://sharetxt.live/" + pathUrl.value;
 				window.open(path, "_self");
-				// pageinsight("GotoRoom", status => {
-				// 	let path = "http://sharetxt.live/" + pathUrl2.value;
-				// 	window.open(path, "_self");
-				// });
 			}
 		};
 

@@ -24,7 +24,6 @@
 }
 
 .rex-vertical-align-span{
-	min-height: 100px;
 	display: inline-flex;
 	align-items: center;
 }

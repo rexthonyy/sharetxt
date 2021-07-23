@@ -1,0 +1,45 @@
+/* The container <div> - needed to position the dropdown content */
+.rex-cd-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.rex-cd-dropdown-content {
+  display: none;
+  position: absolute;
+  /*background-color: #f1f1f1;*/
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+  top: 30px;
+}
+
+.rex-cd-dropdown-content-min{
+  display: none;
+  position: absolute;
+  /*background-color: #f1f1f1;*/
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.rex-cd-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.rex-cd-dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.rex-cd-show {display:block;}
+
+@media (max-width: 600px){
+  .rex-cd-dropdown-content{
+    min-width: 110px;
+  }
+}

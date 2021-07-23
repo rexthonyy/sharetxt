@@ -32,6 +32,7 @@ $ cd sharetxt && npm install
   12.   When a user closes the web page, the web socket connection is terminated and all connected clients to that route are notified.
   
 ## Change log
+* **1.5.0** (2021-7-23): Updated the night mode implementation, localisation support for chinese, malay, spanish, german, and hindi
 * **1.4.3** (2021-6-02): Added Page Insight Analytics
 * **1.4.2** (2021-5-26): Changed the responsiveness of the copy to clipboard button
 * **2.0.0** (2021-5-20): Added SSL certificate for sharetext.live

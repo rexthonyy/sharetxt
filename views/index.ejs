@@ -12,192 +12,122 @@
 	<meta name="twitter:card" content="summary_large_image"/>
 	<meta name="twitter:site" content="@rexthony"/>
 	<meta name="twitter:creator" content="@rexthony"/>
-	<meta property="twitter:image" content="images/twitter-card.png"/>
+	<meta property="twitter:image" content="/images/twitter-card.png"/>
 	<meta property="twitter:title" content="Share TXT"/>
 	<meta property="og:url" content="http://sharetxt.live/"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:title" content="Share text between browser windows in real time"/>
 	<meta property="og:description" content="Share text between browser windows in real time."/>
-	<meta property="og:image" content="images/twitter-card.png"/>
+	<meta property="og:image" content="/images/twitter-card.png"/>
 	<meta property="og:site_name" content="Share TXT"/>
 	<meta property="og:locale" content="en_US"/>
 	<link rel="canonical" href="http://sharetxt.live/"/>
 	<meta name="next-head-count" content="18"/>
 	<link type="text/css" rel="stylesheet" href="css/index.css"/>
-	<script type="text/javascript" src="js/util.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="/js/util.js"></script>
+	<script type="text/javascript" src="/js/dictionary.js"></script>
+	<script type="text/javascript" src="/js/translate.js"></script>
+	<script type="text/javascript" src="/js/index.js"></script>
 	<script>const ROOM_NAME = "<%= roomName %>";</script>
+	<script async src="https://cdn.splitbee.io/sb.js"></script>
+	<script async defer data-domain='sharetxt.live' src='https://pageinsight.herokuapp.com/js/pageinsight.js'></script>
+	<script>window.pageinsight = window.pageinsight || function () {(window.pageinsight.b = window.pageinsight.b || []).push(arguments)};</script>
 </head>
 
 <body>
-	<!-- Light mode -->
-	<div class="custom-lm-container">
-		<div class="custom-responsive-container custom-nav-height custom-lm-nav-background-color">
-			<table class="rex-height-100pp rex-width-100pp">
-				<tr>
-					<td class="rex-width-40px">
-						<a href="http://sharetxt.live">
-						<!-- <a href="http://localhost:3000"> -->
-							<img src="images/icon.png" class="custom-icon-size rex-width-40px rex-height-40px rex-display-table-cell rex-vertical-align rex-mr-16px">
-						</a>
-					</td>
-					<td >
-						<span class="custom-lm-app-name-color rex-weight-bold rex-vertical-align rex-fs-x-large rex-text-overflow-ellipses rex-mr-16px">Share TXT</span>
-						<span class="custom-lm-version-color rex-fs-xx-small rex-nowrap">v 1.4.3</span>
-					</td>
-					<td class="rex-width-0px rex-text-align-right">
-						<div class="rex-display-inline-block rex-nowrap">
-							<label for="customToggleLightSwitch">
-								<span class="rex-fs-normal custom-lm-mode-color rex-mr-8px rex-vertical-align rex-hover">Light mode</span>
-							</label>
-							<label class="rex-toggle-switch rex-vertical-align">
-								<input id="customToggleLightSwitch" type="checkbox">
-								<span class="rex-toggle-switch-slider rex-toggle-switch-round"></span>
-							</label>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="custom-display-grid rex-display-grid2">
-			<div class="custom-hero-container custom-display-height custom-responsive-container">
-				<p class="custom-hero-text custom-lm-title-color rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp">Visit this website on two devices or browser windows. Enter your text in the field to share.</p>
+	<div id="container" class="custom-lm-container">
+		<div id="mainBg">
+			<div class="custom-responsive-container custom-nav-height">
+				<table class="rex-height-100pp rex-width-100pp">
+					<tr>
+						<td class="rex-width-40px">
+							<a href="http://sharetxt.live">
+								<img src="/images/icon.png" class="custom-icon-size rex-width-40px rex-height-40px rex-display-table-cell rex-vertical-align rex-mr-16px">
+							</a>
+						</td>
+						<td>
+							<span id="appName" class="rex-weight-bold rex-vertical-align rex-fs-x-large rex-text-overflow-ellipses rex-mr-16px">Share TXT</span>
+							<span id="appVersion" class="rex-fs-xx-small rex-nowrap">v 1.5.0</span>
+						</td>
+						<td class="rex-width-0px rex-text-align-right">
+							<div class="rex-display-inline-block rex-nowrap">
+								<label for="customToggleLightSwitch">
+									<span id="colorTheme" class="rex-fs-normal custom-lm-mode-color rex-mr-8px rex-vertical-align rex-hover" translate>Light mode</span>
+								</label>
+								<label class="rex-toggle-switch rex-vertical-align rex-mr-8px">
+									<input id="customToggleLightSwitch" type="checkbox">
+									<span class="rex-toggle-switch-slider rex-toggle-switch-round"></span>
+								</label>
+								<span class="custom-border-left">
 
-				<div class="rex-mt-32px custom-lm-title-color">
-					<span id="numConnections1" class="custom-lm-primary-color">0 clients </span> connected in <span id="roomName1" class="custom-lm-primary-color rex-hover rex-mr-8px custom-path">default</span><img src="images/ic_redirect.png" class="custom-redirect">
-				</div>
+									<div id="languageToggle" class="rex-cd-dropdown">
+										<span class="rex-cd-dropbtn rex-curDiv-8px rex-vertical-align-span rex-pad8px12px rex-hover">
+											<span id="selectedLang" class="rex-fs-normal rex-vertical-align">
+												FR
+											</span>
+										</span>
+										<div id="languageToggleDropdown" class="rex-cd-dropdown-content-min">
+											<span class="custom-dropdown-content rex-fs-normal rex-display-block rex-pad12px16px rex-selectable-item-background rex-hover">EN</span>
+											<span class="custom-dropdown-content rex-fs-normal rex-display-block rex-pad12px16px rex-selectable-item-background rex-hover rex-item-selected">FR</span>
+											<span class="custom-dropdown-content rex-fs-normal rex-display-block rex-pad12px16px rex-selectable-item-background rex-hover">TW</span>
+										</div>
+									</div>
 
-				<div class="rex-mt-64px">
-					<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=light" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 200px; height: 43px;" width="200" height="43" /></a>
-				</div>
 
-				<p class="rex-mt-32px custom-lm-version-color rex-fs-small rex-mb-16px rex-lh-xx-small">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony" target="_blank" style="text-decoration: none;" class="custom-lm-version-color rex-weight-bold">Rex Anthony</a></p>
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</div>
-			<div class="custom-display-height custom-lm-editor-background-color">
-				<div class="custom-editor-input-height">
-					<textarea id="inputFieldLightMode" placeholder="Type or paste text to share." class="rex-fs-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
+			<div class="custom-display-grid rex-display-grid2">
+				<div class="custom-hero-container custom-display-height custom-responsive-container">
+					<p id="headline" class="custom-hero-text custom-lm-title-color rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp" translate>Visit this website on two devices or browser windows. Enter your text in the field to share.</p>
+
+					<div id="clientsLabel" class="rex-mt-32px custom-lm-title-color">
+						<span id="numConnections" class="rex-weight-bold">0 clients</span> <span translate>connected in</span> <span id="roomName" class="rex-weight-bold rex-hover rex-mr-8px custom-path">default</span><img id="redirectIcon" src="/images/ic_redirect.png" class="custom-redirect">
+					</div>
+
+					<div id="producthuntLight" class="rex-mt-64px">
+						<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=light" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 200px; height: 43px;" width="200" height="43" /></a>
+					</div>
+					<div id="producthuntDark" class="rex-mt-64px">
+						<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=dark" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 200px; height: 43px;" width="200" height="43" /></a>
+					</div>
+
+					<p id="createdBy" class="rex-mt-32px custom-lm-version-color rex-fs-small rex-mb-16px rex-lh-xx-small"><span translate>Created with</span> <span style="color:red;">&#10084;</span> <span translate>by</span> <a href="https://twitter.com/rexthony" target="_blank" style="text-decoration: none;" class="custom-color rex-weight-bold">Rex Anthony</a></p>
 				</div>
-				<div id="copyBtn1" class="custom-editor-btn-height custom-lm-editor-btn rex-hover rex-display-flex rex-center-flex-items">
-					<span id="copyBtn1Content" class="rex-color-white rex-fs-large rex-weight-bold">Copy to clipboard</span>
+				<div id="editorBg" class="custom-display-height">
+					<div class="custom-editor-input-height">
+						<textarea id="inputField" placeholder="Type or paste text to share." class="rex-fs-normal rex-lh-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
+					</div>
+					<div id="copyBtn" class="custom-editor-btn-height custom-editor-btn rex-hover rex-display-flex rex-center-flex-items">
+						<span id="copyBtnContent" class="rex-color-white rex-fs-large rex-weight-bold" translate>Copy to clipboard</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="modalBackground" class="rex-modal-background custom-modal-background">
+			<div class="custom-modal">
+				<div id="gotoHeader" class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items" translate>Go to</div>
+				<div id="gotoBodyBg" class="rex-pad16px">
+					<table class="rex-width-100pp rex-mt-32px">
+						<tr>
+							<td class="rex-width-0">
+								<span class="custom-color">http://sharetxt.live/</span>
+							</td>
+							<td>
+								<input type="text" id="pathUrl" class="rex-width-100pp rex-fs-normal custom-lm-modal-input">
+							</td>
+						</tr>
+					</table>
+					<div class="rex-text-align-right rex-mt-32px">
+						<button id="gotoUrl" class="rex-btn-primary rex-fs-normal rex-nowrap" translate>Go to url</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	<!-- Dark mode -->
-	<div class="custom-dm-container">
-		<div class="custom-responsive-container custom-nav-height custom-dm-nav-background-color">
-			<table class="rex-height-100pp rex-width-100pp">
-				<tr>
-					<td class="rex-width-40px">
-						<a href="http://sharetxt.live">
-							<img src="images/icon.png" class="custom-icon-size rex-width-40px rex-height-40px rex-display-table-cell rex-vertical-align rex-mr-16px">
-						</a>
-					</td>
-					<td >
-						<span class="custom-dm-app-name-color rex-weight-bold rex-vertical-align rex-fs-x-large rex-text-overflow-ellipses rex-mr-16px">Share TXT</span>
-						<span class="custom-dm-version-color rex-fs-xx-small rex-nowrap">v 1.4.3</span>
-					</td>
-					<td class="rex-width-0px rex-text-align-right">
-						<div class="rex-display-inline-block rex-nowrap">
-							<label for="customToggleDarkSwitch">
-								<span class="rex-fs-normal custom-dm-mode-color rex-mr-8px rex-vertical-align rex-hover">Dark mode</span>
-							</label>
-							<label class="rex-toggle-switch rex-vertical-align">
-								<input id="customToggleDarkSwitch" type="checkbox" checked>
-								<span class="rex-toggle-switch-slider rex-toggle-switch-round"></span>
-							</label>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="custom-display-grid rex-display-grid2">
-			<div class="custom-hero-container custom-display-height custom-responsive-container">
-				<p class="custom-hero-text custom-dm-title-color rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp">Visit this website on two devices or browser windows. Enter your text in the field to share.</p>
-
-				<div class="rex-mt-32px custom-dm-title-color">
-					<span id="numConnections2" class="custom-dm-primary-color">0 clients </span> connected in <span id="roomName2" class="custom-dm-primary-color rex-hover rex-mr-8px custom-path">default</span><img src="images/ic_redirect_.png" class="custom-redirect">
-				</div>
-
-				<div class="rex-mt-64px">
-					<a href="https://www.producthunt.com/posts/share-txt?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-share-txt" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=284242&theme=dark" alt="Share TXT - Share text between browsers in real time | Product Hunt" style="width: 200px; height: 43px;" width="200" height="43" /></a>
-				</div>
-
-				<p class="rex-mt-32px custom-lm-version-color rex-fs-small rex-mb-16px rex-lh-xx-small">Created with <span style="color:red;">&#10084;</span> by <a href="https://twitter.com/rexthony" target="_blank" style="text-decoration: none;" class="custom-lm-version-color rex-weight-bold">Rex Anthony</a></p>
-			</div>
-			<div class="custom-display-height custom-dm-editor-background-color">
-				<div class="custom-editor-input-height">
-					<textarea id="inputFieldDarkMode" placeholder="Type or paste text to share" class="custom-dm-input-field rex-fs-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
-				</div>
-				<div id="copyBtn2" class="custom-editor-btn-height custom-dm-editor-btn rex-hover rex-display-flex rex-center-flex-items">
-					<span id="copyBtn2Content" class="rex-color-white rex-fs-large rex-weight-bold">Copy to clipboard</span>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-	<div class="rex-modal-background custom-modal-background">
-		<div class="custom-modal">
-			<div class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items">
-				Go to
-			</div>
-			<div class="rex-pad16px custom-lm-background-color">
-				<table class="rex-width-100pp rex-mt-32px">
-					<tr>
-						<td class="rex-width-0">
-							<span class="custom-lm-color">https://sharetxt.live/</span>
-						</td>
-						<td>
-							<input type="text" id="pathUrl1" class="rex-width-100pp rex-fs-normal custom-lm-modal-input">
-						</td>
-					</tr>
-				</table>
-				<div class="rex-text-align-right rex-mt-32px">
-					<button id="gotoUrl1" class="rex-btn-primary rex-fs-normal rex-nowrap">Go to url</button>
-				</div>
-			</div>
-		</div>
-
-		<div class="custom-modal">
-			<div class="rex-height-40px custom-dm-modal-nav-background-color custom-dm-modal-nav-color rex-display-flex rex-center-flex-items">
-				Go to
-			</div>
-			<div class="rex-pad16px custom-dm-background-color">
-				<table class="rex-width-100pp rex-mt-32px">
-					<tr>
-						<td class="rex-width-0">
-							<span class="custom-dm-color">https://sharetxt.live/</span>
-						</td>
-						<td>
-							<input type="text" id="pathUrl2" class="rex-width-100pp rex-fs-normal custom-dm-modal-input">
-						</td>
-					</tr>
-				</table>
-				<div class="rex-text-align-right rex-mt-32px">
-					<button id="gotoUrl2" class="rex-btn-secondary rex-fs-normal rex-nowrap">Go to url</button>
-				</div>
-			</div>
-		</div>
-	</div>	
 </body>
 </html>
