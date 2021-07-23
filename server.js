@@ -34,6 +34,7 @@ function getLanguageFromCountryCode(countryCode){
 	switch(countryCode){
 		case "TW":
 		case "CN":
+		case "HK":
 			return "TW";
 
 		case "IN":

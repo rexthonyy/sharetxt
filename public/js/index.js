@@ -215,7 +215,7 @@ window.onload = () => {
 			let language = getCookie("lang");
 			if(!language){
 				//use language from server
-				translateSelector.selectLanguage("EN");
+				translateSelector.selectLanguage(LANG);
 			}else{
 				translateSelector.selectLanguage(language);
 			}

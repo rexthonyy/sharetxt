@@ -2,7 +2,7 @@ function getDictionary(){
     return [
         {
             EN: "Visit this website on two devices or browser windows. Enter your text in the field to share.",
-            TW: "在两个设备或浏览器窗口上访问此网站。在要共享的字段中输入您的文本。",
+            CN: "在两个设备或浏览器窗口上访问此网站。在要共享的字段中输入您的文本。",
             HI: "इस वेबसाइट को दो डिवाइस या ब्राउज़र विंडो पर देखें। साझा करने के लिए फ़ील्ड में अपना टेक्स्ट दर्ज करें।",
             ES: "Visite este sitio web en dos dispositivos o en las ventanas del navegador. Ingrese su texto en el campo para compartir.",
             DE: "Besuchen Sie diese Website auf zwei Geräten oder Browserfenstern. Geben Sie Ihren Text in das Feld ein, um ihn zu teilen.",
@@ -10,7 +10,7 @@ function getDictionary(){
         },
         {
             EN: "connected in",
-            TW: "连接在",
+            CN: "连接在",
             HI: "में जुड़ा हुआ है",
             ES: "conectada en",
             DE: "verbunden in",
@@ -18,7 +18,7 @@ function getDictionary(){
         },
         {
             EN: "Created with",
-            TW: "创建于",
+            CN: "创建于",
             HI: "के साथ बनाया गया",
             ES: "Creado con",
             DE: "Hergestellt mit",
@@ -26,7 +26,7 @@ function getDictionary(){
         },
         {
             EN: "Copy to clipboard",
-            TW: "复制到剪贴板",
+            CN: "复制到剪贴板",
             HI: "क्लिपबोर्ड पर कॉपी करें",
             ES: "Copiar al portapapeles",
             DE: "In die Zwischenablage kopieren",
@@ -34,7 +34,7 @@ function getDictionary(){
         },
         {
             EN: "Go to url",
-            TW: "转到网址",
+            CN: "转到网址",
             HI: "यूआरएल पर जाएं",
             ES: "Ir a la url",
             DE: "Zur URL gehen",
@@ -42,7 +42,7 @@ function getDictionary(){
         },
         {
             EN: "Go to",
-            TW: "去",
+            CN: "去",
             HI: "के लिए जाओ",
             ES: "Ir a",
             DE: "Gehe zu",
@@ -50,7 +50,7 @@ function getDictionary(){
         },
         {
             EN: "by",
-            TW: "经过",
+            CN: "经过",
             HI: "द्वारा द्वारा",
             ES: "por",
             DE: "von",
@@ -58,7 +58,7 @@ function getDictionary(){
         },
         {
             EN: "Light mode",
-            TW: "灯光模式",
+            CN: "灯光模式",
             HI: "लाइट मोड",
             ES: "Modo de luz",
             DE: "Lichtmodus",
@@ -66,7 +66,7 @@ function getDictionary(){
         },
         {
             EN: "Dark mode",
-            TW: "黑暗模式",
+            CN: "黑暗模式",
             HI: "डार्क मोड",
             ES: "Modo oscuro",
             DE: "Dunkelmodus",
@@ -74,7 +74,7 @@ function getDictionary(){
         },
         {
             EN: "client",
-            TW: "客户",
+            CN: "客户",
             HI: "ग्राहक",
             ES: "cliente",
             DE: "der Kunde",
@@ -82,7 +82,7 @@ function getDictionary(){
         },
         {
             EN: "clients",
-            TW: "客户",
+            CN: "客户",
             HI: "ग्राहकों",
             ES: "clientes",
             DE: "die Klientel",
@@ -90,7 +90,7 @@ function getDictionary(){
         },
         {
             EN: "Copied!",
-            TW: "已复制！",
+            CN: "已复制！",
             HI: "कॉपी किया गया!",
             ES: "Copiado",
             DE: "Kopiert!",
@@ -98,7 +98,7 @@ function getDictionary(){
         },
         {
             EN: "Socket not connected",
-            TW: "网络套接字未连接",
+            CN: "网络套接字未连接",
             HI: "सॉकेट कनेक्ट नहीं है",
             ES: "Toma no conectada",
             DE: "Steckdose nicht angeschlossen",
@@ -106,7 +106,7 @@ function getDictionary(){
         },
         {
             EN: "Type or paste text to share.",
-            TW: "键入或粘贴要共享的文本。",
+            CN: "键入或粘贴要共享的文本。",
             HI: "साझा करने के लिए टेक्स्ट टाइप या पेस्ट करें।",
             ES: "Escriba o pegue texto para compartir.",
             DE: "Geben oder fügen Sie Text ein, um ihn zu teilen.",
