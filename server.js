@@ -25,7 +25,7 @@ app.get('/:room', (req, res) => {
 	let roomName = req.params.room;
 	getCountryCode(util.getIpAddress(req), response => {
 		let lang = response.status == "success" ? getLanguageFromCountryCode(response.countryCode) : "EN";
-		res.render('index', { roomName: roomName, lang: lang });
+		res.render('acquired', { roomName: roomName, lang: lang });
 	});
 });
 

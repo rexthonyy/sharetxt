@@ -23,11 +23,11 @@
 	<meta property="og:locale" content="en_US"/>
 	<link rel="canonical" href="http://sharetxt.live/"/>
 	<meta name="next-head-count" content="18"/>
-	<link type="text/css" rel="stylesheet" href="/css/index.css"/>
+	<link type="text/css" rel="stylesheet" href="/css/acquired.css"/>
 	<script type="text/javascript" src="/js/util.js"></script>
 	<script type="text/javascript" src="/js/dictionary.js"></script>
 	<script type="text/javascript" src="/js/translate.js"></script>
-	<script type="text/javascript" src="/js/index.js"></script>
+	<script type="text/javascript" src="/js/acquired.js"></script>
 	<script>
 		const ROOM_NAME = "<%= roomName %>";
 		const LANG = "<%= lang %>";
@@ -37,7 +37,7 @@
 </head>
 
 <body>
-	<div id="container" class="custom-lm-container">
+	<div id="container" class="custom-dm-container">
 		<div id="mainBg">
 			<div class="custom-responsive-container custom-nav-height">
 				<table class="rex-height-100pp rex-width-100pp">
@@ -82,31 +82,20 @@
 					</tr>
 				</table>
 			</div>
-			<div class="custom-display-grid rex-display-grid2">
-				<div class="custom-hero-container custom-display-height custom-responsive-container">
-					<p id="headline" class="custom-hero-text rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp" translate>Visit this website on two devices or browser windows. Enter your text in the field to share.</p>
-
-					<div id="clientsLabel" class="rex-mt-32px">
-						<span id="numConnections" class="rex-weight-bold">0 clients</span> <span translate>connected in</span> <span id="roomName" class="rex-weight-bold rex-hover rex-mr-8px custom-path">default</span><img id="redirectIcon" src="/images/ic_redirect.png" class="custom-redirect">
-					</div>
-
-					<div class="rex-mt-32px rex-width-70pp custom-claim-link-container-grid">
-						<div class="rex-pl-16px rex-pt-16px rex-pb-16px custom-border-2px-primary rex-nowrap">
-							<span id="claimLinkShareTXT" class="rex-fs-normal rex-weight-bold rex-vertical-align-span">sharetxt.live/</span>
-							<input id="claimLinkShareTXTInput" type="text" placeholder="name" class="rex-fs-normal custom-my-link-input rex-weight-bold">
-						</div>
-						<div id="btnClaimMyLink" class="custom-claim-my-link-btn rex-display-flex rex-center-flex-items custom-editor-btn rex-hover">
-							<span class="rex-fs-normal rex-color-white" translate>Claim my link</span>
-						</div>
-					</div>
-				</div>
-				<div id="editorBg" class="custom-display-height">
-					<div class="custom-editor-input-height">
-						<textarea id="inputField" placeholder="Type or paste text to share." class="rex-fs-normal rex-lh-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
-					</div>
-					<div id="copyBtn" class="custom-editor-btn-height custom-editor-btn rex-hover rex-display-flex rex-center-flex-items">
-						<span id="copyBtnContent" class="rex-color-white rex-fs-large rex-weight-bold" translate>Copy to clipboard</span>
-					</div>
+			<div class="rex-center-text rex-mt-64px">
+				<h1 id="headline" class="rex-fs-x-large">"<span id="roomName" class="rex-weight-bold rex-color-secondary"><%= roomName %></span>" has been acquired</h1>
+                <div class="rex-space-64px"></div>
+                <div class="custom-claim-link-container-grid rex-center-div-horizontal">
+                    <div class="rex-pl-16px rex-pt-16px rex-pb-16px custom-border-2px-primary rex-nowrap">
+                        <span id="claimLinkShareTXT" class="rex-fs-normal rex-weight-bold rex-vertical-align-span">sharetxt.live/</span>
+                        <input id="claimLinkShareTXTInput" type="text" placeholder="name" class="rex-fs-normal custom-my-link-input rex-weight-bold">
+                    </div>
+                    <div id="btnClaimMyLink" class="custom-claim-my-link-btn rex-display-flex rex-center-flex-items custom-editor-btn rex-hover">
+                        <span class="rex-fs-normal rex-color-white" translate>Claim my link</span>
+                    </div>
+                </div>
+                <div id="signupContainer" class="rex-center-text rex-pad8px rex-fs-small rex-mt-32px">
+					Already have an account? <span id="btnLoginClaimLink" class="rex-weight-bold rex-hover rex-underline">Log in</span>
 				</div>
 			</div>
 		</div>

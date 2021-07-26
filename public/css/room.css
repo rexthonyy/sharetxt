@@ -1,0 +1,604 @@
+@import 'rex.css';
+@import 'rex-size.css';
+@import 'rex-color.css';
+@import 'rex-background.css';
+@import 'rex-font-size.css';
+@import 'rex-margin.css';
+@import 'rex-padding.css';
+@import 'rex-border.css';
+@import 'rex-display.css';
+@import 'rex-alignment.css';
+@import 'rex-dom.css';
+@import 'rex-toggle-switch.css';
+@import 'rex-clickable-dropdown.css';
+@import 'rex-scrollbar.css';
+@import 'rex-positioning.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body{
+	font-family: 'Inter', sans-serif;
+}
+
+textarea{
+	font-family: 'Inter', sans-serif;
+}
+
+/*General*/
+.custom-responsive-container{
+	padding: 0 32px;
+}
+
+.custom-settings-container{
+    margin-bottom: 32px;
+}
+
+.custom-settings-container div{
+    width: 300px;
+}
+
+.custom-input-field-container{
+	padding: 32px;
+}
+
+.custom-nav-height{
+	height: 70px;
+}
+
+.custom-display-height{
+	height: calc(100vh - 70px);
+}
+
+.custom-redirect{
+	display: none;
+}
+.custom-path:hover + .custom-redirect{
+	display: inline;
+	width: 14px;
+	height: 14px;
+}
+
+.custom-editor-input-height{
+	height: calc(100% - 70px);
+}
+
+.custom-editor-btn-height{
+	height: 70px;
+}
+
+.custom-modal-background{
+	display: none;
+	/* display: flex; */
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.custom-modal{
+	width: 400px;
+}
+
+.custom-history-modal{
+    width: 700px;
+}
+
+.custom-history-item{
+    padding: 16px;
+}
+/* .custom-modal:first-child{
+	display: block;
+} */
+
+.custom-color{
+	color: rgb(71, 190, 185);
+}
+
+/*The copy button*/
+.custom-editor-btn{
+	background-color: rgb(71, 190, 185);
+}
+
+.custom-editor-btn:hover{
+	background-color: rgb(89, 234, 227);
+	transition: .3s;
+}
+
+.custom-border-left{
+	border-left: 1px solid rgb(80, 80, 80);
+}
+
+#historyNoAccess{
+    height: 300px;
+}
+
+#historyLoading{
+    height: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Light mode : Background color of the whole screen*/
+.custom-lm-container div#mainBg{
+	height: 100vh;
+	background-color: rgb(246, 251, 238);
+}
+
+/* Light mode : app name */
+.custom-lm-container div#mainBg div table tr td #appName{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode: app version */
+.custom-lm-container div#mainBg div table tr td #appVersion{
+	color: rgb(141, 216, 205);
+}
+
+/* Light mode : theme label color */
+.custom-lm-container div#mainBg div table tr td div label #colorTheme{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : selected language color */
+.custom-lm-container div#mainBg div table tr td div span div span span#selectedLang{
+	color: rgb(22, 6, 71);
+	padding-bottom: 4px;
+	border-bottom: 1px dashed rgb(22, 6, 71);
+}
+
+/* Light mode : selected language dropdown background color */
+.custom-lm-container div#mainBg div table tr td div span div div#languageToggleDropdown{
+	background-color: white;
+}
+
+/* Light mode : selected language dropdown content color */
+.custom-lm-container div#mainBg div table tr td div span div div#languageToggleDropdown span{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : headline color */
+.custom-lm-container div#mainBg div div div p#headline{
+	color: rgb(22, 6, 71);
+}
+
+/* Dark mode : number of connections container */
+.custom-lm-container div#mainBg div div div div#clientsLabel{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : number of connections label */
+.custom-lm-container div#mainBg div div div div span#numConnections{
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : rooms name label */
+.custom-lm-container div#mainBg div div div div span#roomName{
+	color: rgb(22, 6, 71);
+}
+
+/*Light mode : history button*/
+.custom-lm-container div#mainBg div div div button#btnHistory{
+    border: 0;
+	padding: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+.custom-dm-container div#mainBg div div div div div{
+    color: rgb(22, 6, 71);
+}
+
+/* Light mode : textarea background*/
+.custom-lm-container div#mainBg div div#editorBg{
+	background-color: rgb(228, 248, 243);
+}
+
+/* Light mode : gotomodal header*/
+.custom-lm-container div div div#gotoHeader{
+	background-color: rgb(71, 190, 185);
+	color: white;
+}
+
+/* Light mode : gotoBodyBg header*/
+.custom-lm-container div div div#gotoBodyBg{
+	background-color: rgb(246, 251, 238);
+}
+
+/* Light mode : goto path url*/
+.custom-lm-container div div div#gotoBodyBg table tr td input#pathUrl{
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid rgb(80, 80, 80);
+}
+
+/* Light mode : goto button*/
+.custom-lm-container div div div#gotoBodyBg div button#gotoUrl{
+	padding: 8px 16px;
+	background-color: transparent;
+	border: 0;
+	letter-spacing: 2px;
+	color: rgb(71, 190, 185);
+}
+
+/* Light mode : goto button hover */
+.custom-lm-container div div div#gotoBodyBg div button#gotoUrl:hover{
+	cursor: pointer;
+	background-color: rgb(240, 240, 240);
+}
+
+/* Light mode : history header*/
+.custom-lm-container div div div#historyHeader{
+	background-color: rgb(71, 190, 185);
+	color: white;
+}
+
+/* Light mode : historyBg*/
+.custom-lm-container div div div#historyBg{
+	background-color: rgb(246, 251, 238);
+}
+
+/* Light mode : history content color*/
+.custom-lm-container div div div#historyBg div#historyAccess div p{
+	color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#historyBg div#historyNoAccess h1{
+    color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#historyBg div#historyNoAccess p{
+    color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#historyBg div#historyNoAccess button{
+    padding: 12px 16px;
+    border: 0;
+    color: white;
+}
+
+/* Light mode : subscription header*/
+.custom-lm-container div div div#subscriptionHeader{
+	background-color: rgb(71, 190, 185);
+	color: white;
+}
+
+/* Light mode : subscriptionBg*/
+.custom-lm-container div div div#subscriptionBg{
+	background-color: rgb(246, 251, 238);
+    padding: 16px;
+}
+
+.custom-lm-container div div div#subscriptionBg div#subscriptionMain div div h1{
+    color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#subscriptionBg div#subscriptionMain div div span#subscriptionPrice{
+    color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#subscriptionBg div#subscriptionMain div div span#subscriptionMonth{
+    margin-left: -4px;
+    color: rgb(86, 72, 128);
+}
+
+.custom-lm-container div div div#activateProHeader{
+	background-color: rgb(71, 190, 185);
+	color: white;
+}
+
+.custom-lm-container div div div#activateProBg{
+    background-color: rgb(246, 251, 238);
+    padding: 16px;
+}
+
+.custom-lm-container div div div#activateProBg div#activateProMain h1{
+    color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#activateProBg div#activateProMain p{
+    color: rgb(22, 6, 71);
+}
+
+.custom-lm-container div div div#activateProBg div#activateProMain div{
+    color: rgb(22, 6, 71);
+}
+
+
+
+
+
+
+
+
+
+
+/* Dark mode background */
+.custom-dm-container div#mainBg{
+	height: 100vh;
+	background-color: rgb(16, 29, 37);
+}
+
+/* Dark mode : app name */
+.custom-dm-container div#mainBg div table tr td #appName{
+	color: rgb(241, 241, 241);
+}
+
+/* Dark mode: app version */
+.custom-dm-container div#mainBg div table tr td #appVersion{
+	color: rgb(125, 204, 220);
+}
+
+/* Dark mode : theme label color */
+.custom-dm-container div#mainBg div table tr td div label #colorTheme{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : selected language color */
+.custom-dm-container div#mainBg div table tr td div span div span span#selectedLang{
+	color: rgb(211, 215, 218);
+	padding-bottom: 4px;
+	border-bottom: 1px dashed rgb(211, 215, 218);
+}
+
+/* Dark mode : selected language dropdown background color */
+.custom-dm-container div#mainBg div table tr td div span div div#languageToggleDropdown{
+	background-color: rgb(68, 73, 78);
+}
+
+/* Dark mode : selected language dropdown content color */
+.custom-dm-container div#mainBg div table tr td div span div div#languageToggleDropdown span{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : headline color */
+.custom-dm-container div#mainBg div div div p#headline{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : number of connections container */
+.custom-dm-container div#mainBg div div div div#clientsLabel{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : number of connections label */
+.custom-dm-container div#mainBg div div div div span#numConnections{
+	color: rgb(71, 190, 185);
+}
+
+/* Dark mode : rooms name label */
+.custom-dm-container div#mainBg div div div div span#roomName{
+	color: rgb(71, 190, 185);
+}
+
+/* Dark mode : history button*/
+.custom-dm-container div#mainBg div div div button#btnHistory{
+    border: 0;
+	padding: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+.custom-dm-container div#mainBg div div div div div{
+    color: rgb(211, 215, 218);
+}
+
+/* Dark mode : textarea background*/
+.custom-dm-container div#mainBg div div#editorBg{
+	background-color: rgb(35, 45, 54);
+}
+
+/* Dark mode : textarea input field*/
+.custom-dm-container div#mainBg div div div textarea#inputField{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : gotomodal header*/
+.custom-dm-container div div div#gotoHeader{
+	background-color: rgb(0, 176, 156);
+	color: white;
+}
+
+/* Dark mode : gotoBodyBg header*/
+.custom-dm-container div div div#gotoBodyBg{
+	background-color: rgb(35, 45, 54);
+}
+
+/* Dark mode : goto path color*/
+.custom-dm-container div div div#gotoBodyBg table tr td input#pathUrl{
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid rgb(80, 80, 80);
+	color: white;
+}
+
+/* Dark mode : goto button*/
+.custom-dm-container div div div#gotoBodyBg div button#gotoUrl{
+	padding: 8px 16px;
+	background-color: transparent;
+	border: 0;
+	letter-spacing: 2px;
+	color: rgb(71, 190, 185);
+}
+/* Dark mode : goto button hover*/
+.custom-dm-container div div div#gotoBodyBg div button#gotoUrl:hover{
+	cursor: pointer;
+	background-color: rgba(80, 80, 80, 0.4);
+}
+
+/* Dark mode : history header*/
+.custom-dm-container div div div#historyHeader{
+	background-color: rgb(0, 176, 156);
+	color: white;
+}
+
+/* Dark mode : historyBg*/
+.custom-dm-container div div div#historyBg{
+	background-color: rgb(35, 45, 54);
+}
+
+/* Dark mode : history content color*/
+.custom-dm-container div div div#historyBg div#historyAccess div p{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : history history heading*/
+.custom-dm-container div div div#historyBg div#historyNoAccess h1{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : history history heading*/
+.custom-dm-container div div div#historyBg div#historyNoAccess p{
+	color: rgb(211, 215, 218);
+}
+
+/* Dark mode : history history heading*/
+.custom-dm-container div div div#historyBg div#historyNoAccess button{
+	color: white;
+    padding: 12px 16px;
+    border: 0;
+}
+
+/* Dark mode : subscription header*/
+.custom-dm-container div div div#subscriptionHeader{
+	background-color: rgb(0, 176, 156);
+	color: white;
+}
+
+/* Light mode : subscriptionBg*/
+.custom-dm-container div div div#subscriptionBg{
+	background-color: rgb(35, 45, 54);
+    padding: 16px;
+}
+
+.custom-dm-container div div div#subscriptionBg div#subscriptionMain div div h1{
+    color: rgb(211, 215, 218);
+}
+
+.custom-dm-container div div div#subscriptionBg div#subscriptionMain div div span#subscriptionPrice{
+    color: rgb(211, 215, 218);
+}
+
+.custom-dm-container div div div#subscriptionBg div#subscriptionMain div div span#subscriptionMonth{
+    margin-left: -4px;
+    color: rgb(146, 167, 184);
+}
+
+.custom-dm-container div div div#subscriptionBg div#subscriptionMain div#subscriptionProgress{
+    background-color: rgb(0, 0, 0);
+}
+
+.custom-dm-container div div div#activateProHeader{
+	background-color: rgb(0, 176, 156);
+	color: white;
+}
+
+.custom-dm-container div div div#activateProBg{
+    background-color: rgb(35, 45, 54);
+    padding: 16px;
+}
+
+.custom-dm-container div div div#activateProBg div#activateProMain p{
+    color: rgb(211, 215, 218);
+}
+
+.custom-dm-container div div div#activateProBg div#activateProMain div{
+    color: rgb(211, 215, 218);
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 700px) {
+	.custom-responsive-container{
+		padding: 0 16px;
+	}
+	.custom-input-field-container{
+		padding: 16px;
+	}
+	.custom-display-grid{
+		display: block;
+	}
+	.custom-hero-container{
+		height: auto;
+	}
+	.custom-hero-text{
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 32px;
+	}
+    .custom-history-modal{
+        width: calc(100% - 32px);
+    }
+	.custom-history-button{
+		margin-bottom: 16px;
+	}
+    .custom-height-settings-container{
+        margin-top: 62px;
+        height: 80px;
+        margin-bottom: 16px;
+    }
+    .custom-settings-container{
+        margin-bottom: 0px;
+        width: 70%;
+    }
+    .custom-settings-container div{
+        width: 100%;
+    }
+}
+
+@media (max-width: 625px) {
+	.custom-icon-size{
+		width: 35px;
+		height: 35px;
+		margin-right: 8px;
+	}
+}
+
+@media (max-width: 400px) {
+	.custom-lm-mode-color, .custom-dm-mode-color{
+		display: none;
+	}
+	.custom-lm-version-color{
+		display: block;
+	}
+	.custom-hero-text{
+		font-size: 20px;
+		margin-top: 16px;
+		width: 100%;
+	}
+	.custom-modal{
+		width: calc(100% - 32px);
+	}
+    .custom-history-modal{
+        width: calc(100% - 32px);
+    }
+	.custom-history-button{
+		width: 100%;
+	}
+    #historyNoAccess{
+        height: 200px;
+    }
+    #historyLoading{
+        height: 200px;
+    }
+    .custom-settings-container{
+        width: 100%;
+    }
+}
+

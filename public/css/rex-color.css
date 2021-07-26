@@ -1,10 +1,10 @@
 /*application defined*/
 .rex-color-primary{
-	color: rgb(56, 89, 220);
+	color: rgb(89, 234, 227);
 }
 
 .rex-color-secondary{
-	color: rgb(56, 89, 220);
+	color: rgb(130, 167, 190);
 }
 
 .rex-color-tertiary{
@@ -16,7 +16,7 @@
 }
 
 .rex-color-danger{
-	color: rgb(250, 10, 10);
+	color: #FF6A00;
 }
 
 /*default colors*/

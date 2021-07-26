@@ -17,14 +17,6 @@ function getDictionary(){
             MY: "bersambung di"
         },
         {
-            EN: "Created with",
-            CN: "创建于",
-            HI: "के साथ बनाया गया",
-            ES: "Creado con",
-            DE: "Hergestellt mit",
-            MY: "Dibuat dengan"
-        },
-        {
             EN: "Copy to clipboard",
             CN: "复制到剪贴板",
             HI: "क्लिपबोर्ड पर कॉपी करें",
@@ -47,14 +39,6 @@ function getDictionary(){
             ES: "Ir a",
             DE: "Gehe zu",
             MY: "Pergi ke"
-        },
-        {
-            EN: "by",
-            CN: "经过",
-            HI: "द्वारा द्वारा",
-            ES: "por",
-            DE: "von",
-            MY: "oleh"
         },
         {
             EN: "Light mode",

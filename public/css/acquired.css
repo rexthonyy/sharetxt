@@ -19,41 +19,12 @@ body{
 	font-family: 'Inter', sans-serif;
 }
 
-textarea{
-	font-family: 'Inter', sans-serif;
-}
-
 /*General*/
 .custom-responsive-container{
 	padding: 0 32px;
 }
 
-.custom-input-field-container{
-	padding: 32px;
-}
-
 .custom-nav-height{
-	height: 70px;
-}
-
-.custom-display-height{
-	height: calc(100vh - 70px);
-}
-
-.custom-redirect{
-	display: none;
-}
-.custom-path:hover + .custom-redirect{
-	display: inline;
-	width: 14px;
-	height: 14px;
-}
-
-.custom-editor-input-height{
-	height: calc(100% - 70px);
-}
-
-.custom-editor-btn-height{
 	height: 70px;
 }
 
@@ -93,6 +64,7 @@ textarea{
 }
 
 .custom-claim-link-container-grid{
+    width: 600px;
 	display: grid;
 	grid-template-columns: auto 150px;
 	grid-template-rows: auto;
@@ -180,72 +152,29 @@ textarea{
 }
 
 /* Light mode : headline color */
-.custom-lm-container div#mainBg div div p#headline{
-	color: rgb(22, 6, 71);
-}
-
-/* Dark mode : number of connections container */
-.custom-lm-container div#mainBg div div div#clientsLabel{
-	color: rgb(22, 6, 71);
-}
-
-/* Light mode : number of connections label */
-.custom-lm-container div#mainBg div div div span#numConnections{
+.custom-lm-container div#mainBg div h1#headline{
 	color: rgb(22, 6, 71);
 }
 
 /* Light mode : rooms name label */
-.custom-lm-container div#mainBg div div div span#roomName{
-	color: rgb(22, 6, 71);
+.custom-lm-container div#mainBg div h1#headline span#roomName{
+    color: rgb(126, 170, 172);
 }
 
 /*Light mode : claim link sharetxt link*/
-.custom-lm-container div#mainBg div div div div span#claimLinkShareTXT{
+.custom-lm-container div#mainBg div div div span#claimLinkShareTXT{
 	color: rgb(22, 6, 71);
 }
 
 /*Light mode : claim link sharetxt input*/
-.custom-lm-container div#mainBg div div div div input#claimLinkShareTXTInput{
+.custom-lm-container div#mainBg div div div input#claimLinkShareTXTInput{
 	color: rgb(22, 6, 71);
 	margin-left: -4px;
 }
 
-/* Light mode : textarea background*/
-.custom-lm-container div#mainBg div div#editorBg{
-	background-color: rgb(228, 248, 243);
-}
-
-/* Light mode : gotomodal header*/
-.custom-lm-container div div div#gotoHeader{
-	background-color: rgb(71, 190, 185);
-	color: white;
-}
-
-/* Light mode : gotoBodyBg header*/
-.custom-lm-container div div div#gotoBodyBg{
-	background-color: rgb(246, 251, 238);
-}
-
-/* Light mode : goto path url*/
-.custom-lm-container div div div#gotoBodyBg table tr td input#pathUrl{
-	background-color: transparent;
-	border: 0;
-	border-bottom: 1px solid rgb(80, 80, 80);
-}
-
-/* Light mode : goto button*/
-.custom-lm-container div div div#gotoBodyBg div button#gotoUrl{
-	padding: 8px 16px;
-	background-color: transparent;
-	border: 0;
-	letter-spacing: 2px;
-	color: rgb(71, 190, 185);
-}
-
-/* Light mode : goto button hover */
-.custom-lm-container div div div#gotoBodyBg div button#gotoUrl:hover{
-	cursor: pointer;
-	background-color: rgb(240, 240, 240);
+/* Light mode : sign up container */
+.custom-lm-container div#mainBg div div#signupContainer{
+    color: rgb(126, 170, 172);
 }
 
 /* Light mode : sign up form background*/
@@ -512,77 +441,29 @@ textarea{
 }
 
 /* Dark mode : headline color */
-.custom-dm-container div#mainBg div div p#headline{
+.custom-dm-container div#mainBg div h1#headline{
 	color: rgb(211, 215, 218);
-}
-
-/* Dark mode : number of connections container */
-.custom-dm-container div#mainBg div div div#clientsLabel{
-	color: rgb(211, 215, 218);
-}
-
-/* Dark mode : number of connections label */
-.custom-dm-container div#mainBg div div div span#numConnections{
-	color: rgb(71, 190, 185);
 }
 
 /* Dark mode : rooms name label */
-.custom-dm-container div#mainBg div div div span#roomName{
+.custom-dm-container div#mainBg div h1#headline span#roomName{
 	color: rgb(71, 190, 185);
 }
 
 /*Dark mode : claim link sharetxt link*/
-.custom-dm-container div#mainBg div div div div span#claimLinkShareTXT{
+.custom-dm-container div#mainBg div div div span#claimLinkShareTXT{
 	color: rgb(211, 215, 218);
 }
 
 /*Dark mode : claim link sharetxt input*/
-.custom-dm-container div#mainBg div div div div input#claimLinkShareTXTInput{
+.custom-dm-container div#mainBg div div div input#claimLinkShareTXTInput{
 	color: rgb(211, 215, 218);
 	margin-left: -4px;
 }
 
-/* Dark mode : textarea background*/
-.custom-dm-container div#mainBg div div#editorBg{
-	background-color: rgb(35, 45, 54);
-}
-
-/* Dark mode : textarea input field*/
-.custom-dm-container div#mainBg div div div textarea#inputField{
-	color: rgb(211, 215, 218);
-}
-
-/* Dark mode : gotomodal header*/
-.custom-dm-container div div div#gotoHeader{
-	background-color: rgb(0, 176, 156);
-	color: white;
-}
-
-/* Dark mode : gotoBodyBg header*/
-.custom-dm-container div div div#gotoBodyBg{
-	background-color: rgb(35, 45, 54);
-}
-
-/* Dark mode : goto path color*/
-.custom-dm-container div div div#gotoBodyBg table tr td input#pathUrl{
-	background-color: transparent;
-	border: 0;
-	border-bottom: 1px solid rgb(80, 80, 80);
-	color: white;
-}
-
-/* Dark mode : goto button*/
-.custom-dm-container div div div#gotoBodyBg div button#gotoUrl{
-	padding: 8px 16px;
-	background-color: transparent;
-	border: 0;
-	letter-spacing: 2px;
-	color: rgb(71, 190, 185);
-}
-/* Dark mode : goto button hover*/
-.custom-dm-container div div div#gotoBodyBg div button#gotoUrl:hover{
-	cursor: pointer;
-	background-color: rgba(80, 80, 80, 0.4);
+/* Dark mode : sign up container */
+.custom-dm-container div#mainBg div div#signupContainer{
+    color: rgb(71, 190, 185);
 }
 
 /*Dark mode : sign up form background*/
@@ -815,64 +696,9 @@ textarea{
 
 
 
-@media (max-width: 1100px) {
-	.custom-claim-link-container-grid{
-		display: block;
-	}
-	.custom-border-2px-primary{
-		border-left: 2px solid rgb(71, 190, 185);
-		border-top: 2px solid rgb(71, 190, 185);
-		border-right: 2px solid rgb(71, 190, 185);
-		border-bottom: 0;
-	}
-	.custom-my-link-input{
-		width: 60%;
-		width: calc(100% - 125px);
-	}
-	.custom-claim-my-link-btn{
-		padding: 16px;
-	}
-}
-
-
 @media (max-width: 700px) {
 	.custom-responsive-container{
 		padding: 0 16px;
-	}
-	.custom-input-field-container{
-		padding: 16px;
-	}
-	.custom-display-grid{
-		display: block;
-	}
-	.custom-hero-container{
-		height: auto;
-	}
-	.custom-hero-text{
-		font-weight: bold;
-		font-size: 24px;
-		line-height: 32px;
-	}
-	.custom-claim-link-container-grid{
-		display: grid;
-		grid-template-columns: auto 150px;
-		grid-template-rows: auto;
-	}
-	.custom-border-2px-primary{
-		border-left: 2px solid rgb(71, 190, 185);
-		border-top: 2px solid rgb(71, 190, 185);
-		border-bottom: 2px solid rgb(71, 190, 185);
-		border-right: 0;
-	}
-	.custom-my-link-input{
-		width: 60%;
-		width: calc(100% - 120px);
-	}
-	.custom-claim-my-link-btn{
-		padding: 16px;
-	}
-	.custom-claim-link-container-grid{
-		margin-bottom: 16px;
 	}
 }
 
@@ -882,6 +708,10 @@ textarea{
 		height: 35px;
 		margin-right: 8px;
 	}
+    .custom-claim-link-container-grid{
+        width: calc(100% - 32px);
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 500px) {
@@ -909,16 +739,7 @@ textarea{
 	.custom-lm-version-color{
 		display: block;
 	}
-	.custom-hero-text{
-		font-size: 20px;
-		margin-top: 16px;
-		width: 80%;
-	}
 	.custom-modal{
 		width: calc(100% - 32px);
 	}
-	.custom-claim-link-container-grid{
-		width: 100%;
-	}
 }
-

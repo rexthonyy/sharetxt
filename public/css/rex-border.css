@@ -2,6 +2,10 @@
 	border: 1px solid black;
 }
 
+.rex-border-transparent{
+	border: 1px solid transparent;
+}
+
 .rex-border-blue{
 	border: 1px solid blue;
 }
@@ -35,11 +39,11 @@
 }
 
 .rex-border-top-gray{
-	border-top: 1px solid rgb(164, 164, 164);
+	border-top: 1px solid rgba(158, 165, 165, 0.534);
 }
 
 .rex-border-top-black{
-	border-top: 1px solid rgb(64, 64, 64);
+	border-top: 1px solid rgba(158, 165, 165, 0.534);
 }
 
 .rex-border-bottom-gray{

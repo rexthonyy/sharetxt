@@ -8,28 +8,19 @@ window.onload = () => {
 	let numConnections = document.getElementById("numConnections");
 	let roomName = document.getElementById("roomName");
 	let redirectIcon = document.getElementById("redirectIcon");
-	let claimLinkShareTXTInput = document.getElementById("claimLinkShareTXTInput");
-	let btnClaimMyLink = document.getElementById("btnClaimMyLink");
+	let btnHistory = document.getElementById("btnHistory");
 	let inputField = document.getElementById("inputField");
 	let copyBtn = document.getElementById("copyBtn");
 	let copyBtnContent = document.getElementById("copyBtnContent");
 	
 	let pathUrl = document.getElementById("pathUrl");
 	let gotoUrl = document.getElementById("gotoUrl");
-	let btnSignup = document.getElementById("btnSignup");
-	let btnSignupGoogle = document.getElementById("btnSignupGoogle");
-	let btnSignupFacebook = document.getElementById("btnSignupFacebook");
-	let btnSignupTwitter = document.getElementById("btnSignupTwitter");
-	let btnSignupFormLogin = document.getElementById("btnSignupFormLogin");
-	let btnLoginGoogle = document.getElementById("btnLoginGoogle");
-	let btnLoginFacebook = document.getElementById("btnLoginFacebook");
-	let btnLoginTwitter = document.getElementById("btnLoginTwitter");
-	let btnLoginFormSignup = document.getElementById("btnLoginFormSignup");
-	let btnForgottenPassword = document.getElementById("btnForgottenPassword");
-	let btnResolveForgottenPassword = document.getElementById("btnResolveForgottenPassword");
-	let btnVerifyEmail = document.getElementById("btnVerifyEmail");
-	let btnChangePassword = document.getElementById("btnChangePassword");
-	let btnNotificationProceed = document.getElementById("btnNotificationProceed");
+	let btnSubscription = document.getElementById("btnSubscription");
+	let btnLogout = document.getElementById("btnLogout");
+	let btnHistoryUpgrade = document.getElementById("btnHistoryUpgrade");
+	let btnCancelSubscription = document.getElementById("btnCancelSubscription");
+	let btnActivatePro = document.getElementById("btnActivatePro");
+	let customToggleBillingSwitch = document.getElementById("customToggleBillingSwitch");
 
 	let translateSelector = new TranslateSelector({
 		dropdownLabelElm: selectedLang,
@@ -266,9 +257,9 @@ window.onload = () => {
 			handleMinDropdown(e);// close the language dropdown if it is open
 		};
 
-		btnClaimMyLink.onclick = e => {
+		btnHistory.onclick = e => {
 			stopClickPropagation(e);
-			dialog.show(Dialog.SIGNUP);
+			dialog.show(Dialog.HISTORY);
 		}
 
 		pathUrl.addEventListener("keyup", e => {
@@ -285,61 +276,34 @@ window.onload = () => {
 			}
 		};
 
-		btnSignup.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
+        btnSubscription.onclick = e => {
+            stopClickPropagation(e);
+            dialog.show(Dialog.SUBSCRIPTION);
+        };
 
-		btnSignupGoogle.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
+        btnLogout.onclick = e => {
+            console.log("Logout");
+        };
 
-		btnSignupFacebook.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
+        btnHistoryUpgrade.onclick = e => {
+            dialog.show(Dialog.UPGRADE);
+        };
 
-		btnSignupTwitter.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
+        customToggleBillingSwitch.addEventListener("change", () => {
+            if(customToggleBillingSwitch.checked){
+                btnActivatePro.textContent = "Pay $50/year";
+            }else{
+                btnActivatePro.textContent = "Pay $5/month";
+            }
+        });
 
-		btnSignupFormLogin.onclick = e => {
-			dialog.show(Dialog.LOGIN);
-		};
+        btnActivatePro.onclick = e => {
+            dialog.show(Dialog.SUBSCRIPTION);
+        };
 
-		btnLoginGoogle.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
-
-		btnLoginFacebook.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
-
-		btnLoginTwitter.onclick = e => {
-			dialog.show(Dialog.LOADING);
-		};
-
-		btnLoginFormSignup.onclick = e => {
-			dialog.show(Dialog.SIGNUP);
-		};
-
-		btnForgottenPassword.onclick = e => {
-			dialog.show(Dialog.RESOLVE_FORGOTTEN_PASSWORD);
-		};
-
-		btnResolveForgottenPassword.onclick = e => {
-			dialog.show(Dialog.CONFIRM_EMAIL);
-		};
-
-		btnVerifyEmail.onclick = e => {
-			dialog.show(Dialog.CHANGE_PASSWORD);
-		};
-
-		btnChangePassword.onclick = e => {
-			dialog.show(Dialog.NOTIFICATION);
-		};
-
-		btnNotificationProceed.onclick = e => {
-			dialog.show(Dialog.LOGIN);
-		};
+        btnCancelSubscription.onclick = e => {
+            dialog.show(Dialog.UPGRADE);
+        };
 	}
 
 	establishSocketConnection();
@@ -347,17 +311,15 @@ window.onload = () => {
 
 class Dialog {
 	static GOTO = 0;
-	static SIGNUP = 1;
-	static LOADING = 2;
-	static LOGIN = 3;
-	static RESOLVE_FORGOTTEN_PASSWORD = 4;
-	static CONFIRM_EMAIL = 5;
-	static CHANGE_PASSWORD = 6;
-	static NOTIFICATION = 7;
+    static LOADING = 1;
+	static HISTORY = 2;
+    static SUBSCRIPTION = 3;
+    static UPGRADE = 4;
+
 
 	constructor(){
 		this.modalBackground = document.getElementById("modalBackground");
-		this.modal = document.getElementsByClassName("custom-modal");
+		this.modal = document.getElementsByClassName("modal");
 
 		for(let i = 0; i < this.modal.length; i++){
 			this.modal[i].onclick = e => {

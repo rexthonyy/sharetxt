@@ -1,0 +1,224 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="icon" href="/images/icon.png" type="image/png"/>
+	<link rel="shortcut icon" href="/images/icon.png" type="image/png"/>
+	<link type="image/x-icon" rel="icon" href="/images/icon.png"/>
+	<title>ShareTXT - <%= roomName %></title>
+	<meta name="robots" content="index,follow"/>
+	<meta name="googlebot" content="index,follow"/>
+	<meta name="description" content="Share text between browser windows in real time"/>
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="@rexthony"/>
+	<meta name="twitter:creator" content="@rexthony"/>
+	<meta property="twitter:image" content="/images/twitter-card.png"/>
+	<meta property="twitter:title" content="Share TXT"/>
+	<meta property="og:url" content="http://sharetxt.live/"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="Share text between browser windows in real time"/>
+	<meta property="og:description" content="Share text between browser windows in real time."/>
+	<meta property="og:image" content="/images/twitter-card.png"/>
+	<meta property="og:site_name" content="Share TXT"/>
+	<meta property="og:locale" content="en_US"/>
+	<link rel="canonical" href="http://sharetxt.live/"/>
+	<meta name="next-head-count" content="18"/>
+	<link type="text/css" rel="stylesheet" href="/css/room.css"/>
+	<script type="text/javascript" src="/js/util.js"></script>
+	<script type="text/javascript" src="/js/dictionary.js"></script>
+	<script type="text/javascript" src="/js/translate.js"></script>
+	<script type="text/javascript" src="/js/room.js"></script>
+	<script>
+		const ROOM_NAME = "<%= roomName %>";
+		const LANG = "<%= lang %>";
+	</script>
+	<script async src="https://cdn.splitbee.io/sb.js"></script>
+	<script async defer data-domain='sharetxt.live' src='https://pageinsight.herokuapp.com/js/pageinsight.js'></script>
+</head>
+
+<body>
+	<div id="container" class="custom-lm-container">
+		<div id="mainBg">
+			<div class="custom-responsive-container custom-nav-height">
+				<table class="rex-height-100pp rex-width-100pp">
+					<tr>
+						<td class="rex-width-40px">
+							<a href="http://sharetxt.live">
+								<img src="/images/icon.png" class="custom-icon-size rex-width-40px rex-height-40px rex-display-table-cell rex-vertical-align rex-mr-16px">
+							</a>
+						</td>
+						<td>
+							<span id="appName" class="rex-weight-bold rex-vertical-align rex-fs-x-large rex-text-overflow-ellipses rex-mr-16px">Share TXT</span>
+							<span id="appVersion" class="rex-fs-xx-small rex-nowrap">v 2.0.0</span>
+						</td>
+						<td class="rex-width-0px rex-text-align-right">
+							<div class="rex-display-inline-block rex-nowrap">
+								<label for="customToggleLightSwitch">
+									<span id="colorTheme" class="rex-fs-normal custom-lm-mode-color rex-mr-8px rex-vertical-align rex-hover" translate>Light mode</span>
+								</label>
+								<label class="rex-toggle-switch rex-vertical-align rex-mr-8px">
+									<input id="customToggleLightSwitch" type="checkbox">
+									<span class="rex-toggle-switch-slider rex-toggle-switch-round"></span>
+								</label>
+								<span class="custom-border-left">
+
+									<div id="languageToggle" class="rex-cd-dropdown">
+										<span class="rex-cd-dropbtn rex-curDiv-8px rex-vertical-align-span rex-pad8px12px rex-hover">
+											<span id="selectedLang" class="rex-fs-normal rex-vertical-align">
+												EN
+											</span>
+										</span>
+										<div id="languageToggleDropdown" class="rex-cd-dropdown-content-min">
+											<span class="custom-dropdown-content rex-fs-normal rex-display-block rex-pad12px16px rex-selectable-item-background rex-hover">EN</span>
+											<span class="custom-dropdown-content rex-fs-normal rex-display-block rex-pad12px16px rex-selectable-item-background rex-hover rex-item-selected">FR</span>
+											<span class="custom-dropdown-content rex-fs-normal rex-display-block rex-pad12px16px rex-selectable-item-background rex-hover">TW</span>
+										</div>
+									</div>
+
+
+								</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="custom-display-grid rex-display-grid2">
+				<div class="custom-hero-container custom-display-height custom-responsive-container">
+                    <div class="rex-height-50pp rex-border-transparent">
+                        <p id="headline" class="custom-hero-text rex-fs-normal rex-mt-32px rex-lh-normal rex-width-70pp" translate>Visit this website on two devices or browser windows. Enter your text in the field to share.</p>
+    
+                        <div id="clientsLabel" class="rex-mt-32px">
+                            <span id="numConnections" class="rex-weight-bold">0 clients</span> <span translate>connected in</span> <span id="roomName" class="rex-weight-bold rex-hover rex-mr-8px custom-path">default</span><img id="redirectIcon" src="/images/ic_redirect.png" class="custom-redirect">
+                        </div>
+    
+                        <button id="btnHistory" class="rex-mt-32px rex-width-70pp custom-history-button custom-editor-btn rex-fs-normal rex-hover">History</button>
+                    </div>
+                    <div class="rex-height-50pp rex-position-relative custom-height-settings-container">
+                        <div class="rex-position-absolute rex-bottom-0 custom-settings-container">
+                            <div id="btnSubscription" class="rex-border-bottom-gray rex-pt-8px rex-pb-8px rex-selectable-item-background rex-hover">
+                                Activate Pro
+                            </div>
+                            <div id="btnLogout" class="rex-selectable-item-background rex-pt-8px rex-pb-8px rex-hover">
+                                Log out
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div id="editorBg" class="custom-display-height">
+					<div class="custom-editor-input-height">
+						<textarea id="inputField" placeholder="Type or paste text to share." class="rex-fs-normal rex-lh-normal rex-width-100pp rex-height-100pp rex-noresize custom-input-field-container rex-pt-8px rex-background-transparent rex-no-border"></textarea>
+					</div>
+					<div id="copyBtn" class="custom-editor-btn-height custom-editor-btn rex-hover rex-display-flex rex-center-flex-items">
+						<span id="copyBtnContent" class="rex-color-white rex-fs-large rex-weight-bold" translate>Copy to clipboard</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="modalBackground" class="rex-modal-background custom-modal-background">
+			<div class="modal custom-modal"> <!-- GOTO url -->
+				<div id="gotoHeader" class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items rex-weight-bold" translate>Go to</div>
+				<div id="gotoBodyBg" class="rex-pad16px">
+					<table class="rex-width-100pp rex-mt-32px">
+						<tr>
+							<td class="rex-width-0">
+								<span class="custom-color">http://sharetxt.live/</span>
+							</td>
+							<td>
+								<input type="text" id="pathUrl" class="rex-width-100pp rex-fs-normal custom-lm-modal-input">
+							</td>
+						</tr>
+					</table>
+					<div class="rex-text-align-right rex-mt-32px">
+						<button id="gotoUrl" class="rex-btn-primary rex-fs-normal rex-nowrap" translate>Go to url</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal custom-modal rex-center-text"> <!-- Loading -->
+				<img src="/images/ic_loading.gif" class="rex-width-70px rex-height-70px">
+			</div>
+            <div class="modal custom-history-modal rex-overflow-auto"><!-- History container -->
+                <div id="historyHeader" class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items rex-weight-bold">History</div>
+                <div id="historyBg">
+                    <div id="historyAccess" hidden>
+                        <div class="custom-history-item rex-selectable-item-background rex-hover">
+                            <p class="rex-fs-normal rex-lh-normal">Enter your email Enter your email Enter your email Enter your email Enter your emails Enter your email Enter your email Enter your email </p>
+                        </div>
+                        <div class="custom-history-item rex-border-top-gray rex-selectable-item-background rex-hover">
+                            <p class="rex-fs-normal rex-lh-normal">Enter your email Enter your email Enter your email Enter your email Enter your email Enter your email </p>
+                        </div>
+                    </div>
+                    <div id="historyNoAccess" class="rex-center-text rex-height-200px rex-display-flex rex-center-flex-items">
+                       <h1 class="rex-fs-large">ShareTXT Pro</h1>
+                       <p class="rex-fs-normal rex-mt-16px">This is a Pro feature</p>
+                       <button id="btnHistoryUpgrade" class="custom-editor-btn rex-fs-normal rex-mt-16px rex-hover">Upgrade</button>
+                    </div>
+                    <div id="historyLoading" class="rex-center-flex-items rex-height-200px" hidden>
+                        <img src="/images/ic_loading.gif" class="rex-width-50px rex-height-50px">
+                    </div>
+                </div>
+            </div>
+            <div class="modal custom-modal rex-overflow-auto"><!-- Subscription container -->
+                <div id="subscriptionHeader" class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items rex-weight-bold">Subscription</div>
+                <div id="subscriptionBg">
+                    <div id="subscriptionMain">
+                        <div class="rex-display-grid2">
+                            <div>
+                                <h1 class="rex-fs-large">ShareTXT Pro</h1>
+                            </div>
+                            <div class="rex-text-align-right">
+                                <span id="subscriptionPrice" class="rex-fs-large rex-weight-bold">$5</span>
+                                <span id="subscriptionMonth" class="rex-fs-small">/month</span>
+                            </div>
+                        </div>
+                        <div id="subscriptionProgress" class="rex-mt-32px rex-background-gray rex-height-10px rex-position-relative">
+                            <div style="width: 80%" class="rex-height-100pp rex-background-primary"></div>
+                        </div>
+                        <p id="subscriptionRemainingDays" class="rex-mt-8px rex-color-lightgray rex-fs-small">
+                            8 days remaining
+                        </p>
+
+                        <p class="rex-mt-32px">
+                            <button id="btnCancelSubscription" class="custom-editor-btn rex-no-border rex-pad12px16px rex-hover rex-fs-normal rex-color-white">
+                                Cancel subscription
+                            </button>
+                        </p>
+                     </div>
+                     <div id="subscriptionLoading" class="rex-center-flex-items rex-height-200px" hidden>
+                         <img src="/images/ic_loading.gif" class="rex-width-50px rex-height-50px">
+                     </div>
+                </div>
+            </div>
+            <div class="modal custom-modal rex-overflow-auto"><!-- Upgrade to ShareTXT Pro container -->
+                <div id="activateProHeader" class="rex-height-40px custom-lm-modal-nav-background-color custom-lm-modal-nav-color rex-display-flex rex-center-flex-items rex-weight-bold">Activate ShareTXT Pro</div>
+                <div id="activateProBg">
+                    <div id="activateProMain" class="rex-center-text">
+                        <p class="rex-fs-normal rex-mt-8px rex-lh-normal">
+                            Activate this plan if you want to store the history of the text that you share.
+                        </p>
+
+                        <p class="rex-mt-16px rex-center-text">
+                            <button id="btnActivatePro" class="custom-editor-btn rex-no-border rex-pad12px16px rex-hover rex-fs-normal rex-color-white">
+                                Pay $5/month
+                            </button>
+                        </p>
+
+                        <div class="rex-mt-16px">
+                            <label class="rex-toggle-switch-small rex-vertical-align rex-mr-8px">
+                                <input id="customToggleBillingSwitch" type="checkbox">
+                                <span class="rex-toggle-switch-slider-small rex-toggle-switch-round"></span>
+                            </label>
+                            <label for="customToggleBillingSwitch" class="rex-hover">
+                                Save 20% with yearly billing
+                            </label>
+                        </div>
+                     </div>
+                     <div id="activateProLoading" class="rex-center-flex-items rex-height-200px" hidden>
+                         <img src="/images/ic_loading.gif" class="rex-width-50px rex-height-50px">
+                     </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</body>
+</html>

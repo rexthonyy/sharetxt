@@ -306,8 +306,8 @@
 	width: 40px;
 }
 
-.rex-height-50px{
-	height: 50px;
+.rex-width-50px{
+	width: 50px;
 }
 
 .rex-width-60px{
@@ -332,6 +332,10 @@
 
 .rex-width-100px{
 	width: 100px;
+}
+
+.rex-width-120px{
+	width: 120px;
 }
 
 .rex-width-200px{

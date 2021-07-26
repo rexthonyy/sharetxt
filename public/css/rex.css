@@ -84,6 +84,11 @@ html {
 	text-overflow: ellipsis;
 }
 
+.rex-text-ellipses{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .rex-noresize{
 	resize: none;
 }

@@ -1,6 +1,6 @@
 /*Application defined*/
 .rex-background-primary{
-	background-color: rgb(23, 52, 97);
+	background-color: rgb(89, 234, 227);
 }
 
 .rex-background-secondary{
@@ -77,6 +77,6 @@
 }
 
 .rex-selectable-item-background:hover, .rex-item-selected{
-	background-color: rgba(180, 180, 180, 0.2);
+	background-color: rgba(37, 84, 114, 0.295);
 	transition: all .3s;
 }

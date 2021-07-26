@@ -39,7 +39,6 @@ class TranslateSelector {
                     this.selectLanguage(selectedLanguage);
                     if(this.onchange) this.onchange(selectedLanguage);
                     setCookie("lang", selectedLanguage, 7);
-                    pageinsight("changeLang", status => {});
                 };
             }
             //translate language
