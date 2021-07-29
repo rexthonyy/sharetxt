@@ -1,7 +1,15 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const http = require('http');
 const WebSocket = require('ws');
 const util = require('./util');
+const UsersModel = require('./models/Users');
+const SessionsModel = require('./models/Sessions');
+const api = require('./api');
+const authRouter = require('./auth');
+const cronRouter = require('./cron');
 
 const app = express();
 const server = http.Server(app);
@@ -10,76 +18,78 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
+app.use(session({
+	secret: "sharetxtsecret",
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(util.setup);
+app.use('/api', api.router);
+app.use('/auth', authRouter);
+app.use('/cron', cronRouter);
 
 const LOCAL_PORT = 3000;
 const PORT = process.env.PORT || LOCAL_PORT;
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
+const MONGODB_URL = "mongodb://rex:anthony@localhost:27017/sharetxtdb?authSource=admin";
+mongoose.connect(process.env.MONGODB_URI || MONGODB_URL, {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true
+}).then(res => {
+	console.log('Connected to mongodb');
+});
+
 const wss = new WebSocket.Server({ server: server });
+
+function gotoRoom(req, res, view, roomName){
+	util.getLanguage(req, lang => {
+		res.render(view, { roomName: roomName, lang: lang });
+	});
+}
 
 app.get('/', (req, res) => {
 	res.redirect('/default');
 });
 
-app.get('/:room', (req, res) => {
+app.get('/:room', loginIfAuthenticated, checkIfRoomIsAcquired, (req, res) => {
 	let roomName = req.params.room;
-	getCountryCode(util.getIpAddress(req), response => {
-		let lang = response.status == "success" ? getLanguageFromCountryCode(response.countryCode) : "EN";
-		res.render('acquired', { roomName: roomName, lang: lang });
-	});
+	gotoRoom(req, res, "index", roomName);
 });
 
-function getLanguageFromCountryCode(countryCode){
-	switch(countryCode){
-		case "TW":
-		case "CN":
-		case "HK":
-			return "TW";
+app.get('*', (req, res) => {
+	res.redirect('/default');
+});
 
-		case "IN":
-			return "HI";
-
-		case "ES":
-		case "AR":
-			return "ES";
-
-		case "DE":
-			return "DE";
-
-		case "MY":
-			return "MY";
-
-		default:
-			return "EN";
-
-	}
-}
-
-let ipAddressCache = {};
-function getCountryCode(ipAddress, callback) {
-	if (ipAddressCache[ipAddress]) {
-		callback(ipAddressCache[ipAddress]);
-	} else {
-		let lookupAgent = `http://ip-api.com/json/${ipAddress}?fields=status,message,countryCode`;
-		util.sendGetRequest(lookupAgent)
-			.then(json => {
-				if (json.status == "success") {
-					let response = { status: "success", countryCode: json.countryCode };
-					if(Object.keys(ipAddressCache).length > 100){
-						ipAddressCache = {};
-					}
-					ipAddressCache[ipAddress] = response;
-					callback(response);
-				} else {
-					console.error("ip resolution error : " + json.message);
-					callback({ status: 'failed' });
+function loginIfAuthenticated(req, res, next){
+	if (util.isUserLoggedIn(req)) {
+		SessionsModel.findOne({ sessionId: req.session.user.sessionId }, (err, doc) => {
+			if (err || doc == null) return next();
+			UsersModel.findOne({ userId: doc.userId }, (err, doc) => {
+				if (err || doc == null) return next();
+				let roomName = req.params.room;
+				if(roomName == doc.roomName){
+					gotoRoom(req, res, "room", doc.roomName);
+				}else{
+					res.redirect(`/${doc.roomName}`);
 				}
-			}).catch(err => {
-				console.error(err);
-				callback({ status: 'failed' });
 			});
+		});
+	}else{
+		next();
 	}
 }
+
+function checkIfRoomIsAcquired(req, res, next){
+	let roomName = req.params.room;
+	UsersModel.findOne({ roomName: roomName }, (err, doc) => {
+		if (err || doc == null) return next();
+		gotoRoom(req, res, "acquired", roomName);
+	});
+}
+
 
 let rooms = {};
 

@@ -32,6 +32,7 @@ $ cd sharetxt && npm install
   12.   When a user closes the web page, the web socket connection is terminated and all connected clients to that route are notified.
   
 ## Change log
+* **1.5.2** (2021-7-29): Fixed the input field from showing undefined in translate
 * **1.5.1** (2021-7-23): Updated to provide localization based on the user location using the ip address
 * **1.5.0** (2021-7-23): Updated the night mode implementation, localisation support for chinese, malay, spanish, german, and hindi
 * **1.4.3** (2021-6-02): Added Page Insight Analytics

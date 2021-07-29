@@ -88,6 +88,10 @@ textarea{
 	transition: .3s;
 }
 
+.custom-editor-btn:disabled{
+	background-color: rgba(71, 190, 184, 0.418);
+}
+
 .custom-border-left{
 	border-left: 1px solid rgb(80, 80, 80);
 }
@@ -272,6 +276,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-lm-container div form#signupBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(22, 6, 71);
+	border: 1px solid #31C600;
+}
+
 /* Light mode : signup form input*/
 .custom-lm-container div form#signupBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -280,6 +290,12 @@ textarea{
 /* Light mode : signup form name container */
 .custom-lm-container div form#signupBg div.custom-signup-form-name-container{
 	border: 1px solid rgb(39, 95, 129);
+	color: rgb(22, 6, 71);
+}
+
+/* Light mode : signup form name container */
+.custom-lm-container div form#signupBg div.custom-signup-form-name-container-error{
+	border: 1px solid #FF6A00;
 	color: rgb(22, 6, 71);
 }
 
@@ -335,6 +351,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-lm-container div form#loginBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(22, 6, 71);
+	border: 1px solid #31C600;
+}
+
 /* Light mode : login form input*/
 .custom-lm-container div form#loginBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -385,6 +407,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-lm-container div form#forgottenPasswordBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(22, 6, 71);
+	border: 1px solid #31C600;
+}
+
 /* Light mode : forgotten password form input*/
 .custom-lm-container div form#forgottenPasswordBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -419,6 +447,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-lm-container div form#confirmEmailBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(22, 6, 71);
+	border: 1px solid #31C600;
+}
+
 /* Light mode : confirm email form input*/
 .custom-lm-container div form#confirmEmailBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -439,6 +473,18 @@ textarea{
 	background-color: transparent;
 	color: rgb(22, 6, 71);
 	border: 1px solid rgb(39, 95, 129);
+}
+
+.custom-lm-container div form#changePasswordBg input.custom-signup-form-input-error{
+	background-color: transparent;
+	color: rgb(22, 6, 71);
+	border: 1px solid #FF6A00;
+}
+
+.custom-lm-container div form#changePasswordBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(22, 6, 71);
+	border: 1px solid #31C600;
 }
 
 /* Light mode : change password form input*/
@@ -609,6 +655,13 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-dm-container div form#signupBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(220, 220, 220);
+	border: 1px solid #31C600;
+}
+
+
 /*Dark mode : signup form input*/
 .custom-dm-container div form#signupBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -617,6 +670,12 @@ textarea{
 /* Dark mode : signup form name container */
 .custom-dm-container div form#signupBg div.custom-signup-form-name-container{
 	border: 1px solid rgb(39, 95, 129);
+	color: rgb(220, 220, 220);
+}
+
+/* Dark mode : signup form name container */
+.custom-dm-container div form#signupBg div.custom-signup-form-name-container-error{
+	border: 1px solid #FF6A00;
 	color: rgb(220, 220, 220);
 }
 
@@ -672,6 +731,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-dm-container div form#loginBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(220, 220, 220);
+	border: 1px solid #31C600;
+}
+
 /* Dark mode : login form input*/
 .custom-dm-container div form#loginBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -722,6 +787,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-dm-container div form#forgottenPasswordBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	color: rgb(220, 220, 220);
+	border: 1px solid #31C600;
+}
+
 /* Dark mode : forgotten password form input*/
 .custom-dm-container div form#forgottenPasswordBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -756,6 +827,12 @@ textarea{
 	border: 1px solid #FF6A00;
 }
 
+.custom-dm-container div form#confirmEmailBg input.custom-signup-form-input-success{
+	background-color: transparent;
+	border: 1px solid #31C600;
+	color: rgb(220, 220, 220);
+}
+
 /* Dark mode : confirm email form input*/
 .custom-dm-container div form#confirmEmailBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
@@ -781,6 +858,19 @@ textarea{
 /* Dark mode : change password form input*/
 .custom-dm-container div form#changePasswordBg input.custom-signup-form-input:focus{
 	border: 1px solid rgb(71, 190, 185);
+}
+
+/* Dark mode : confirm email form input*/
+.custom-dm-container div form#changePasswordBg input.custom-signup-form-input-error{
+	background-color: transparent;
+	color: rgb(220, 220, 220);
+	border: 1px solid #FF6A00;
+}
+
+.custom-dm-container div form#changePasswordBg input.custom-signup-form-input-success{
+	border: 1px solid #31C600;
+	background-color: transparent;
+	color: rgb(220, 220, 220);
 }
 
 /* Dark mode : notification background*/
