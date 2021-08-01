@@ -425,15 +425,27 @@ class SignupDialog extends Dialog {
 		};
 		
 		this.btnSignupGoogle.onclick = e => {
-			console.log("google sign up");
+			this.isNameValid(res => {
+				if(res.isValid){
+					window.open(`/auth/google?type=signup&roomName=${res.name}`, "_self");
+				}
+			});
 		};
 		
 		this.btnSignupFacebook.onclick = e => {
-			console.log("facebook sign up");
+			this.isNameValid(res => {
+				if(res.isValid){
+					window.open(`/auth/facebook?type=signup&roomName=${res.name}`, "_self");
+				}
+			});
 		};
 		
 		this.btnSignupTwitter.onclick = e => {
-			console.log("twitter sign up");
+			this.isNameValid(res => {
+				if(res.isValid){
+					window.open(`/auth/twitter?type=signup&roomName=${res.name}`, "_self");
+				}
+			});
 		};
 		
 		this.btnSignupFormLogin.onclick = e => {
@@ -451,6 +463,67 @@ class SignupDialog extends Dialog {
 		}
 
 		super.show();
+	}
+
+	isNameValid(cb){
+		let name = this.signupClaimLinkShareTXTInput.value.trim();
+		if(name.length == 0){
+			this.signupFormNameContainer.className = "custom-signup-form-name-container-error rex-mt-16px custom-claim-link-signup-container-grid rex-pad8px rex-border";
+			this.signupFormNameError.textContent = "Please enter a value";
+			this.signupFormNameError.style.display = "block";
+			this.signupFormNameIcon.src="/images/ic_cancel.png";
+			cb({ isValid: false });
+			return;
+		}
+
+		if(['app', 'default', 'auth', 'api', 'cron'].find(roomName => roomName == name)){
+			this.signupFormNameContainer.className = "custom-signup-form-name-container-error rex-mt-16px custom-claim-link-signup-container-grid rex-pad8px rex-border";
+			this.signupFormNameError.textContent = "This name is already taken";
+			this.signupFormNameError.style.display = "block";
+			this.signupFormNameIcon.src="/images/ic_cancel.png";
+			cb({ isValid: false });
+			return;
+		}
+
+		dialogHandler.show(Dialog.LOADING, { windowClickListener: () => {} });
+
+		sendGetRequest(getHostUrl() + "/api/checkRoomName?roomName=" + name)
+		.then(json => {
+			if(json.status == "success"){
+				if(json.isRegistered){
+					this.signupFormNameContainer.className = "custom-signup-form-name-container-error rex-mt-16px custom-claim-link-signup-container-grid rex-pad8px rex-border";
+					this.signupFormNameError.textContent = "Name is already taken";
+					this.signupFormNameError.style.display = "block";
+					this.signupFormNameIcon.style.display = "inline";
+					this.signupFormNameIcon.src="/images/ic_cancel.png";
+					dialogHandler.show(Dialog.SIGNUP);
+					cb({ isValid: false });
+				}else{
+					cb({
+						isValid: true,
+						name: name
+					});
+				}
+			}else{
+				dialogHandler.show(Dialog.NOTIFICATION, {
+					title: "Error",
+					message: json.message,
+					btnLabel: "PROCEED",
+					onclick: () => {
+						dialogHandler.show(Dialog.SIGNUP);
+						cb({ isValid: false });
+					},
+					windowClickListener: () => {
+						dialogHandler.show(Dialog.SIGNUP);
+						cb({ isValid: false });
+					}
+				});
+			}
+		}).catch(err => {
+			console.error(err);
+			dialogHandler.show(Dialog.SIGNUP);
+			cb({ isValid: false });
+		});
 	}
 
 	signupBtnClick(){
@@ -473,7 +546,7 @@ class SignupDialog extends Dialog {
 			return;
 		}
 
-		if(['app', 'default', 'general', 'home'].find(roomName => roomName == name)){
+		if(['app', 'default', 'auth', 'api', 'cron'].find(roomName => roomName == name)){
 			this.signupFormNameContainer.className = "custom-signup-form-name-container-error rex-mt-16px custom-claim-link-signup-container-grid rex-pad8px rex-border";
 			this.signupFormNameError.textContent = "This name is already taken";
 			this.signupFormNameError.style.display = "block";
@@ -784,15 +857,15 @@ class LoginDialog extends Dialog {
 		};
 
 		this.btnLoginGoogle.onclick = e => {
-			console.log("login google");
+			window.open("/auth/google?type=login", "_self");
 		};
 
 		this.btnLoginFacebook.onclick = e => {
-			console.log("facebook login");
+			window.open("/auth/facebook?type=login", "_self");
 		};
 
 		this.btnLoginTwitter.onclick = e => {
-			console.log("twitter login");
+			window.open("/auth/twitter?type=login", "_self");
 		};
 
 		this.btnLoginFormSignup.onclick = e => {
@@ -1023,10 +1096,17 @@ class ResolveForgottenPasswordDialog extends Dialog {
 								windowClickListener: () => {} 
 							});
 						}else{
-							this.forgottenPasswordInput.className = "custom-signup-form-input-error rex-width-100pp rex-pad8px rex-fs-normal rex-mt-32px";
-							this.forgottenPasswordInputError.textContent = "Email could not be authenticated";
-							this.forgottenPasswordInputError.style.display = "block";
-							dialogHandler.show(Dialog.RESOLVE_FORGOTTEN_PASSWORD);
+							dialogHandler.show(Dialog.NOTIFICATION, {
+								title: "Authentication failed",
+								message: "Email could not be authenticated. Please check your internet connection and try again.",
+								btnLabel: "PROCEED",
+								onclick: () => {
+									dialogHandler.show(Dialog.RESOLVE_FORGOTTEN_PASSWORD);
+								},
+								windowClickListener: () => {
+									dialogHandler.show(Dialog.RESOLVE_FORGOTTEN_PASSWORD);
+								}
+							});
 						}
 					}).catch(err => {
 						console.error(err);

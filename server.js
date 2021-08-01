@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
 const http = require('http');
 const WebSocket = require('ws');
 const util = require('./util');
@@ -24,6 +25,8 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(util.setup);
 app.use('/api', api.router);
 app.use('/auth', authRouter);
@@ -40,6 +43,14 @@ mongoose.connect(process.env.MONGODB_URI || MONGODB_URL, {
 	useUnifiedTopology: true
 }).then(res => {
 	console.log('Connected to mongodb');
+});
+
+passport.serializeUser((user, cb) => {
+	cb(null, user);
+});
+
+passport.deserializeUser((obj, cb) => {
+	cb(null, obj);
 });
 
 const wss = new WebSocket.Server({ server: server });
@@ -59,9 +70,9 @@ app.get('/:room', loginIfAuthenticated, checkIfRoomIsAcquired, (req, res) => {
 	gotoRoom(req, res, "index", roomName);
 });
 
-app.get('*', (req, res) => {
-	res.redirect('/default');
-});
+// app.get('*', (req, res) => {
+// 	res.redirect('/default');
+// });
 
 function loginIfAuthenticated(req, res, next){
 	if (util.isUserLoggedIn(req)) {

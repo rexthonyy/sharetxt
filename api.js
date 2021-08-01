@@ -7,6 +7,27 @@ function checkIpAddress(req, res, next){
     next();
 }
 
+function isGoogleIdRegistered(googleId, cb){
+    UsersModel.findOne({ authType: "google", userId: googleId }, (err, doc) => {
+        if(err) return cb({ status: "failed" });
+		if(doc == null) return cb({ status: "success", isRegistered: false }); 
+        cb({ status: "success", isRegistered: true });
+    });
+}
+function isFacebookIdRegistered(facebookId, cb){
+    UsersModel.findOne({ authType: "facebook", userId: facebookId }, (err, doc) => {
+        if(err) return cb({ status: "failed" });
+		if(doc == null) return cb({ status: "success", isRegistered: false }); 
+        cb({ status: "success", isRegistered: true });
+    });
+}
+function isTwitterIdRegistered(twitterId, cb){
+    UsersModel.findOne({ authType: "twitter", userId: twitterId }, (err, doc) => {
+        if(err) return cb({ status: "failed" });
+		if(doc == null) return cb({ status: "success", isRegistered: false }); 
+        cb({ status: "success", isRegistered: true });
+    });
+}
 
 function isEmailRegistered(email, cb){
     if(!util.isEmailValid(email)){
@@ -60,5 +81,8 @@ module.exports = {
     router,
     checkIpAddress,
     isEmailRegistered,
-    isRoomNameRegistered
+    isRoomNameRegistered,
+    isGoogleIdRegistered,
+    isFacebookIdRegistered,
+    isTwitterIdRegistered
 };

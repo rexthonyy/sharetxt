@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
         trim: true
     },
     roomName: {
-        type: String
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,

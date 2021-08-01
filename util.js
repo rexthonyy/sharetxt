@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const url = require('url');
-const SessionsModel = require('./models/Sessions');
+const SocialAuthModel = require('./models/SocialAuth');
 
 function getIpAddress(req) {
 	let ipAddress = req.headers['x-forwarded-for'];
@@ -134,6 +134,32 @@ function myMap(val, minF, maxF, minT, maxT) {
 	return minT + (((val - minF) / (maxF - minF)) * (maxT - minT));
 }
 
+function isSocialAuthAvailable(req) {
+	let isAvailable = false;
+
+	if (req.session.socialSessionId) {
+		isAvailable = true;
+	} else {
+		if (req.cookies['socialSessionId']) {
+			req.session.socialSessionId = req.cookies['socialSessionId'];
+			isAvailable = true;
+		}
+	}
+
+	return isAvailable;
+}
+
+function getSocialAuth(req, cb) {
+	if(isSocialAuthAvailable(req)){
+		SocialAuthModel.findOne({ socialSessionId: req.session.socialSessionId }, (err, doc) => {
+			if(err || doc == null) return cb(null);
+			cb(doc);
+		});
+	}else{
+		cb(null);
+	}
+}
+
 module.exports = {
 	sendPostRequest,
 	setup,
@@ -141,5 +167,6 @@ module.exports = {
 	isUserLoggedIn,
 	isEmailValid,
 	getHostUrl,
-	getRandom
+	getRandom,
+	getSocialAuth
 };
