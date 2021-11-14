@@ -69,6 +69,7 @@ These are people who contributed to the project in one way or the other :heart:
 *	[@Lovelyfin00](https://twitter.com/@lovelyfin00)
 *	[@Mohamme18677371](https://twitter.com/Mohamme18677371)
 *	[@PharmSaheed](https://twitter.com/PharmSaheed)
+*	[@rexthonyy)(https://twitter.com/rexthonyy)
 *	[@Srushtika](https://twitter.com/Srushtika)
 *	[@SudhamJayanthi](https://twitter.com/SudhamJayanthi)
 
