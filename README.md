@@ -32,6 +32,16 @@ $ cd sharetxt && npm install
   12.   When a user closes the web page, the web socket connection is terminated and all connected clients to that route are notified.
   
 ## Change log
+* **4.2.0** (2022-12-18): Added French translation and some user interface improvements
+* **4.1.0** (2022-11-14): Thanks to your massive support on [Buy Me A Coffee](https://www.buymeacoffee.com/sharetxt.live) we have upgraded AI models to compete with and at times outperform the output of paid alternatives. This means that [AI writer](https://sharetxt.live/app/ai-writer) and [AI summarizer](https://sharetxt.live/app/ai-summarizer) have now received massive upgrades. You can continue to use them for FREE. To report bugs or feature requests, use the contact form [here](/contact).
+* **4.0.0** (2022-10-13): New app (AI summarizer) added to the ShareTXT collection of apps, UI improvement for dark/light mode, security updates, improved site translation to cover the entire site, select language in settings for logged in users, and overall site speed performance optimization.
+* **3.1.1** (2022-09-06): Upgraded the AI writer app with a new training model to produce better suggestions
+* **3.1.0** (2022-03-30): Added the replace text feature to the content auditor app
+* **3.0.1** (2022-03-23): Added the save button for logged in users to enable them to save their content in ShareTXT
+* **3.0.0** (2021-12-25): Added the following apps : content auditor, ai writer, search analysis, speech to text, text to speech, countdown timer and stop watch. Major update to the website user interface, created about page, added terms and conditions, blog and contact us
+* **2.1.1** (2021-11-14): Improved the UI and added instructions on how to use ShareTXT on the homepage
+* **2.1.0** (2021-10-20): Added Gmail signup and updated the UI interface
+* **2.0.0** (2021-5-20): Added SSL certificates to sharetxt.live
 * **1.5.2** (2021-7-29): Fixed the input field from showing undefined in translate
 * **1.5.1** (2021-7-23): Updated to provide localization based on the user location using the ip address
 * **1.5.0** (2021-7-23): Updated the night mode implementation, localisation support for chinese, malay, spanish, german, and hindi
