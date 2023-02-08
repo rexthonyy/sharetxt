@@ -52,6 +52,7 @@ $ cd sharetxt && npm install
 * **1.0.1** (2021-2-8): Added some css to update the user interface
 * **1.0.0** (2021-2-8): Initial release
 
+aa
 ## People
 These are people who contributed to the project in one way or the other :heart:
 
